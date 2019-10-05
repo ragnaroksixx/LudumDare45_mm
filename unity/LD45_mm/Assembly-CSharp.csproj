@@ -73,6 +73,7 @@
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
+    <Compile Include="Assets\Scripts\SceneLoader.cs" />
     <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

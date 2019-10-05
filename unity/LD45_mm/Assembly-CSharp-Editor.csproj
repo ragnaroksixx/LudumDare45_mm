@@ -308,9 +308,6 @@
     <Reference Include="DOTweenProEditor">
       <HintPath>C:/Users/Ragna/Documents/Bitbucket/LD45/unity/LD45_mm/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
-    <Reference Include="DOTweenUpgradeManager">
-      <HintPath>C:/Users/Ragna/Documents/Bitbucket/LD45/unity/LD45_mm/Assets/Demigiant/DOTween/Editor/DOTweenUpgradeManager.dll</HintPath>
-    </Reference>
     <Reference Include="DemiLib">
       <HintPath>C:/Users/Ragna/Documents/Bitbucket/LD45/unity/LD45_mm/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>
