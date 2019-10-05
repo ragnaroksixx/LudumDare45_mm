@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float fallMult = 2.5f;
     public float lowJumpMult = 2.0f;
 
-    public bool onGround = false;
+    public bool isGrounded = false;
     public LayerMask groundLayer;
     public float collisionRadius = 1;
     public Transform bottomOffset;
@@ -21,20 +21,40 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHoldTime = 1;
     float jumpHoldTimeTrack;
     ModuleSystem mSystem;
+    bool holdingJump = true;
 
+    public float coyoteTime = 0.1f;
+    public float coyoteTimeTrack;
+    public static PlayerMovement instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         rBody = GetComponent<Rigidbody2D>();
         mSystem = GetComponent<ModuleSystem>();
-        mSystem.ActivateModule<WalkModule>();
-        mSystem.ActivateModule<JumpModule>();
+        mSystem.AddCollectedModule<CoreModule>(true);
+        mSystem.AddCollectedModule<WalkModule>(true);
+        mSystem.AddCollectedModule<JumpModule>(false);
+        mSystem.AddCollectedModule<GunModule>(false);
+        mSystem.AddCollectedModule<MonochromeModule>(true);
+        mSystem.AddCollectedModule<FullSightModule>(false);
+        mSystem.AddCollectedModule<ChargeGunModule>(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        onGround = Physics2D.OverlapCircle(bottomOffset.position, collisionRadius, groundLayer);
+        bool wasGrounded = isGrounded;
+        isGrounded = Physics2D.OverlapCircle(bottomOffset.position, collisionRadius, groundLayer);
+
+        if (wasGrounded && !isGrounded)
+        {
+            coyoteTimeTrack = Time.time + coyoteTime;
+        }
 
         input = Vector2.zero;
         if (mSystem.HasModule<WalkModule>())
@@ -56,22 +76,22 @@ public class PlayerMovement : MonoBehaviour
             Walk(input);
         }
 
-        if (mSystem.HasModule<JumpModule>())
+        if ((isGrounded || Time.time < coyoteTimeTrack) && Input.GetKeyDown(KeyCode.Space) && mSystem.HasModule<JumpModule>())
         {
-            if (onGround && Input.GetKeyDown(KeyCode.Space))
-            {
-                Jump();
-            }
+            Jump();
         }
 
 
-        if (!onGround)
+        if (!isGrounded)
         {
+            holdingJump = jumpHoldTimeTrack > 0 && Input.GetKey(KeyCode.Space);
+            jumpHoldTimeTrack -= Time.deltaTime;
+
             if (rBody.velocity.y < 0)
             {
                 rBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
             }
-            else if (rBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space) && jumpHoldTimeTrack > 0)
+            else if (rBody.velocity.y > 0 && !holdingJump)
             {
                 jumpHoldTimeTrack -= Time.deltaTime;
                 rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMult - 1) * Time.deltaTime;
@@ -80,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void Walk(Vector2 i)
+    public void Walk(Vector2 i)
     {
         i *= speed;
         rBody.velocity = new Vector2(i.x, rBody.velocity.y);
