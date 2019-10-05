@@ -94,7 +94,7 @@ public class UfoMovement : MonoBehaviour
             default:
                 break;
         }
-        if(this.currentHealth <= 0.0f) Object.Destroy(this);
+        if(this.currentHealth <= 0.0f) Death();
         this.fireTimer -= Time.deltaTime;
         this.executionTime -= Time.deltaTime;
     }
@@ -110,11 +110,10 @@ public class UfoMovement : MonoBehaviour
             this.currentHealth -= (this.health * .1f);
         }
     }
-// /Quaternion.FromToRotation(shootPosition.position, PlayerMovement.instance.transform.position)
     void SuperShot()
     {
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
-        bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.right) * bulletSpeed);
+        bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
         this.health -= (this.health * .33f);
     }
@@ -122,6 +121,6 @@ public class UfoMovement : MonoBehaviour
     void Death()
     {
         // todo: trigger death animation
-        Object.Destroy(this);
+        Object.Destroy(this.gameObject);
     }
 }
