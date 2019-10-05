@@ -14,13 +14,15 @@ public class PlayerShoot : MonoBehaviour
     public float minChargeTime = .1f;
     float chargeTrack;
     bool isChargeShooting;
-
+    public Color chargeColor;
+    int d;
     public ParticleSystem chargeParticles;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        MainModule mm = chargeParticles.main;
+        mm.duration = chargeTime / 2;
     }
 
     // Update is called once per frame
@@ -33,17 +35,17 @@ public class PlayerShoot : MonoBehaviour
         else if (Input.GetKey(shootKey) && ModuleSystem.instance.HasModule<ChargeGunModule>() && ModuleSystem.instance.HasModule<GunModule>())
         {
             chargeTrack += Time.deltaTime;
-            if (chargeTrack >= minChargeTime)
+            if (chargeTrack >= minChargeTime && !isChargeShooting)
             {
                 isChargeShooting = true;
-                EmissionModule em = chargeParticles.emission;
-                em.enabled = true;
+                chargeParticles.Play();
+
             }
         }
         else if (Input.GetKeyUp(shootKey) && ModuleSystem.instance.HasModule<GunModule>())
         {
             if (chargeTrack >= chargeTime)
-                Shoot(2);
+                Shoot(1.5f);
             else
                 Shoot();
         }
@@ -53,10 +55,15 @@ public class PlayerShoot : MonoBehaviour
     {
         Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
         bullet.transform.localScale *= mod;
-        bullet.AddForce(shootPosition.right * bulletSpeed);
-        Destroy(bullet.gameObject, bulletLife);
+        bullet.AddForce(shootPosition.right * bulletSpeed * mod);
+        Destroy(bullet.gameObject, bulletLife * mod);
         isChargeShooting = false;
-        EmissionModule em = chargeParticles.emission;
-        em.enabled = false;
+        chargeParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        if (mod > 1)
+        {
+            bullet.GetComponent<PlayerBullet>().SetColor(chargeColor);
+            bullet.GetComponent<PlayerBullet>().Damage = 4;
+        }
     }
+
 }

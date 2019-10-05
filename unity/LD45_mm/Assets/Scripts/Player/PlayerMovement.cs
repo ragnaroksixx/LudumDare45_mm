@@ -27,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
     public float coyoteTimeTrack;
     public static PlayerMovement instance;
 
+    public float recoilTime = 0.5f;
+    float recoilTrack;
+    bool isRecoiling;
+    Vector2 recoilDir;
+
     private void Awake()
     {
         instance = this;
@@ -36,13 +41,13 @@ public class PlayerMovement : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
         mSystem = GetComponent<ModuleSystem>();
-        mSystem.AddCollectedModule<CoreModule>(true);
-        mSystem.AddCollectedModule<WalkModule>(true);
-        mSystem.AddCollectedModule<JumpModule>(false);
-        mSystem.AddCollectedModule<GunModule>(false);
-        mSystem.AddCollectedModule<MonochromeModule>(true);
-        mSystem.AddCollectedModule<FullSightModule>(false);
-        mSystem.AddCollectedModule<ChargeGunModule>(false);
+        mSystem.AddCollectedModule<CoreModule>();
+        mSystem.AddCollectedModule<WalkModule>();
+        mSystem.AddCollectedModule<JumpModule>();
+        mSystem.AddCollectedModule<GunModule>();
+        mSystem.AddCollectedModule<MonochromeModule>();
+        mSystem.AddCollectedModule<FullSightModule>();
+        mSystem.AddCollectedModule<ChargeGunModule>();
     }
 
     // Update is called once per frame
@@ -57,8 +62,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         input = Vector2.zero;
-        if (mSystem.HasModule<WalkModule>())
+        if (isRecoiling)
         {
+            input = recoilDir;
+            Recoil(input);
+            if (Time.time > recoilTrack) isRecoiling = false;
+        }
+        else
+        {
+
             if (Input.GetKey(KeyCode.A))
             {
                 input.x -= 1;
@@ -73,7 +85,8 @@ public class PlayerMovement : MonoBehaviour
             else if (input.x < 0 && isFacingRight)
                 FaceDirection(false);
 
-            Walk(input);
+            if (mSystem.HasModule<WalkModule>())
+                Walk(input);
         }
 
         if ((isGrounded || Time.time < coyoteTimeTrack) && Input.GetKeyDown(KeyCode.Space) && mSystem.HasModule<JumpModule>())
@@ -99,11 +112,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
     public void Walk(Vector2 i)
     {
         i *= speed;
         rBody.velocity = new Vector2(i.x, rBody.velocity.y);
+    }
+    public void Recoil(Vector2 i)
+    {
+        i *= speed;
+        rBody.velocity = new Vector2(i.x, 0);
     }
     void FaceDirection(bool right)
     {
@@ -125,5 +142,18 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere(bottomOffset.position, collisionRadius);
+    }
+
+    public void HitPlayer(Transform source)
+    {
+        isRecoiling = true;
+        Vector3 result;
+        if (source.position.x > transform.position.x)
+            result = Vector3.left;
+        else
+            result = Vector3.right;
+
+        recoilDir = result;
+        recoilTrack = Time.time + recoilTime;
     }
 }

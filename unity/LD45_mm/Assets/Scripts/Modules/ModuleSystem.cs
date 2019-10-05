@@ -31,11 +31,11 @@ public class ModuleSystem : MonoBehaviour
         allModules.Add(typeof(ChargeGunModule), new ChargeGunModule());
         allModules.Add(typeof(MonochromeModule), new MonochromeModule(volume, monoChromeProfile, normalProfile));
         allModules.Add(typeof(FullSightModule), new FullSightModule(volume, normalProfile));
-
+        allModules.Add(typeof(AudioModule), new AudioModule());
         instance = this;
     }
 
-    public void AddCollectedModule<T>(bool activate) where T : Module
+    public void AddCollectedModule<T>(bool activate = true) where T : Module
     {
         ModuleUIObject ui = GameObject.Instantiate(uiPrefab);
         ui.Init(typeof(T), allModules[typeof(T)], this);

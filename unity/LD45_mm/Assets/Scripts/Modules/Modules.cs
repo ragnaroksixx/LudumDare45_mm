@@ -21,19 +21,54 @@ abstract class TypeModule : Module
 
 class JumpModule : BasicModule
 {
-    public override string Name => "Jump";
+    public override string Name => "jump";
+}
+class AudioModule : BasicModule
+{
+    public override string Name => "audio";
 }
 class GunModule : BasicModule
 {
-    public override string Name => "Fire";
+    public override string Name => "fire";
 }
 class ChargeGunModule : BasicModule
 {
-    public override string Name => "Charge.exe";
+    public override string Name => "charge.exe";
 }
 class WalkModule : BasicModule
 {
-    public override string Name => "Movement";
+    public override string Name => "movement";
+
+    public override void DeactivateModule()
+    {
+        base.DeactivateModule();
+        PlayerMovement.instance.Walk(Vector2.zero);
+    }
+}
+class PlayerHealthModule : BasicModule
+{
+    public override string Name => "hud";
+
+    public override void DeactivateModule()
+    {
+        base.DeactivateModule();
+        PlayerHealthUI.instance.Hide();
+    }
+    public override void ActivateModule()
+    {
+        base.ActivateModule();
+        PlayerHealthUI.instance.Show();
+    }
+
+    public override void Default()
+    {
+        base.Default();
+        PlayerHealthUI.instance.Hide();
+    }
+}
+class EnemyHealthModule : BasicModule
+{
+    public override string Name => "enemy scanner";
 
     public override void DeactivateModule()
     {
@@ -43,7 +78,7 @@ class WalkModule : BasicModule
 }
 class CoreModule : Module
 {
-    public override string Name => "Core32";
+    public override string Name => "core32";
 
     public override void ActivateModule()
     {
