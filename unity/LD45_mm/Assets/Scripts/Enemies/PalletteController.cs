@@ -2,28 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UfoMovement : MonoBehaviour
+public class PalletteController : MonoBehaviour
 {
     enum Mode {
         Attack,
-        Evade,
-        Hover
+        SuperShot,
+        Traverse
     };
     Rigidbody2D rb;
+    public bool isGrounded = false;
+    public LayerMask groundLayer;
+    public float collisionRadius = 1;
+    public float fallMult = 2.5f;
+    public Transform bottomOffset;
+    
+    public bool isFacingRight = true;
     public float health = 100.0f;
     private float currentHealth;
     public float speed = 5.0f;
-    public float fireDelay = 1.0f;
-    private float fireTimer;
+    int attackCount;
     // Time that it takes the enemy to do its overall idle and evade cycle 
     public float cycleTime = 5.0f;
-    public float attackTime = 3.0f;
+    public float fireDelay = .5f;
+    private float fireTimer;
     // Time left in an execution loop
     private float executionTime;
     public GameObject bulletPrefab;
     public GameObject superShotPrefab;
     public Transform shootPosition;
-    public float bulletSpeed = 1000.0f;
+    public float bulletSpeed = 500.0f;
     public float bulletLife = 1;
     Mode mode;
 
@@ -31,70 +38,78 @@ public class UfoMovement : MonoBehaviour
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
-        this.mode = Mode.Hover;
+        this.mode = Mode.Traverse;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
+        this.attackCount = 0;
         this.currentHealth = this.health;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        isGrounded = Physics2D.OverlapCircle(bottomOffset.position, collisionRadius, groundLayer);
+
         switch(mode){
-            case Mode.Hover:
-                if (this.executionTime > (this.cycleTime * .5))
+            case Mode.Traverse:
+                if (this.executionTime > 0)
                 {
-                    this.rb.velocity = new Vector2(this.speed, 0.0f);
-                } 
-                else if (this.executionTime > 0)
-                {
-                    this.rb.velocity = new Vector2(-this.speed, 0.0f);
+                    this.rb.velocity = isFacingRight ? (new Vector2(this.speed * 2, this.rb.velocity.y)) : (new Vector2(-this.speed * 2, this.rb.velocity.y));
                 } 
                 else 
                 {
-                    this.mode = Mode.Attack;
+                    this.rb.velocity = new Vector2(0, this.speed);
+                    this.isFacingRight = !this.isFacingRight;
+                    FaceDirection(isFacingRight);
                     this.executionTime = this.cycleTime;
+                    this.mode = (attackCount < 2) ? Mode.Attack : Mode.SuperShot;
                 }
-                Fire();
                 break;
             case Mode.Attack:
-                this.rb.velocity = new Vector2(0, 0);
-                if(this.executionTime < 0)
+                if(this.executionTime > 4)
                 {
-                    SuperShot();  
+                    this.rb.velocity = new Vector2(0, this.speed);
+                    Fire(); 
+                }
+                else if(this.executionTime > 0)
+                {
+                   Fire(); 
+                }
+                else {
+                    this.attackCount += 1;
                     this.executionTime = this.cycleTime;
-                    this.mode = Mode.Evade;
+                    this.mode = Mode.Traverse;
                 } 
                 break;
-            case Mode.Evade:
-                if(this.executionTime > (this.cycleTime * .8)) 
+            case Mode.SuperShot:
+                this.rb.velocity = new Vector2(0, 0);
+                if(this.executionTime < 0) 
                 {
-                    this.rb.velocity = new Vector2(this.speed, -this.speed * 2);
-                }
-                else if (this.executionTime > (this.cycleTime * .6))
-                {
-                    this.rb.velocity = new Vector2(this.speed, this.speed * 2);
-                }
-                else if (this.executionTime > (this.cycleTime * .4))
-                {
-                    this.rb.velocity = new Vector2(-this.speed, -this.speed  * 2);
-                }
-                else if (this.executionTime > (this.cycleTime * .2))
-                {
-                    this.rb.velocity = new Vector2(-this.speed, this.speed  * 2 );
-                }
-                else 
-                {
+                    SuperShot();
+                    this.attackCount = 0;
                     this.executionTime = this.cycleTime;
-                    this.mode = Mode.Hover;
+                    this.mode = Mode.Traverse;
                 }
                 break;
             default:
                 break;
         }
+
+        if (!isGrounded)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
+        }
+
         if(this.currentHealth <= 0.0f) Death();
         this.fireTimer -= Time.deltaTime;
         this.executionTime -= Time.deltaTime;
+    }
+
+    void FaceDirection(bool right)
+    {
+        isFacingRight = right;
+        transform.localEulerAngles = new Vector3(0, right ? 0 : 180, 0);
     }
 
     void Fire()
@@ -102,10 +117,9 @@ public class UfoMovement : MonoBehaviour
         if (this.fireTimer < 0.0f) 
         {
             Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
-            bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
+            bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * new Vector2(1, 0) * bulletSpeed);
             Destroy(bullet.gameObject, bulletLife); 
             this.fireTimer = this.fireDelay;
-            this.currentHealth -= (this.health * .1f);
         }
     }
     void SuperShot()
@@ -113,7 +127,6 @@ public class UfoMovement : MonoBehaviour
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
         bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
-        this.health -= (this.health * .33f);
     }
 
     void Death()
