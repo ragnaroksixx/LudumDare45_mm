@@ -29,8 +29,11 @@ public class UfoMovement : MonoBehaviour
     public float bulletSpeed = 1000.0f;
     public float bulletLife = 1;
     private bool deathSoundPlayed = false;
+    private bool isDying = false;
     Mode mode;
     Animator anim;
+    
+    public ParticleSystem chargeParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +50,11 @@ public class UfoMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.currentHealth <= 0.0f) this.mode = Mode.Dying;
+        if(this.currentHealth <= 0.0f && !this.isDying) {
+            this.executionTime = this.cycleTime;
+            this.mode = Mode.Dying;
+            this.isDying = true;
+        }
 
         switch(mode){
             case Mode.Hover:
