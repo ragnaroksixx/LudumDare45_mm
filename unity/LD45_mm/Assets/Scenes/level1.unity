@@ -1632,6 +1632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b4e26a8a352e745939f6e0beaae929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   speedCoefficient: 0.2
 --- !u!4 &1074054875
 Transform:
@@ -7031,6 +7032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b4e26a8a352e745939f6e0beaae929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   speedCoefficient: 0.5
 --- !u!1 &1430524725
 GameObject:
@@ -8107,6 +8109,36 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+    - target: {fileID: 4100061451358434009, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: daa5728b804fa4f498c34a7e5270a89f, type: 3}
+    - target: {fileID: 4100061451358434009, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: fbab7a75062fa6e4d981298a5c5fe287, type: 3}
+    - target: {fileID: 4100061451358434009, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5873f6ac8863965498bb4fc75a733d16, type: 3}
+    - target: {fileID: 4100061451358434009, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: ee25a1362ac6e6f4294cbf9c04878efb, type: 3}
+    - target: {fileID: 4100061451358434009, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: clips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: d5d0293da28da8540a393d8da794d522, type: 3}
+    - target: {fileID: 4100061451358434009, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: clips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1701d97d40b6dca4bac6f75218c1d9f4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb57fc77fd688264191393d8ffc979f0, type: 3}
 --- !u!1 &1770296034
@@ -8293,6 +8325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b4e26a8a352e745939f6e0beaae929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   speedCoefficient: 0.1
 --- !u!1 &1899417277
 GameObject:

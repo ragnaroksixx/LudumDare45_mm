@@ -18,6 +18,8 @@ public class ModuleAuduiSystem : MonoBehaviour
             sources.Add(a);
             a.playOnAwake = false;
             a.clip = clip;
+            a.volume = 0;
+            a.loop = true;
             a.Play();
         }
         instance = this;

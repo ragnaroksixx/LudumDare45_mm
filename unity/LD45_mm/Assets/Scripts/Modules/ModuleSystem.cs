@@ -123,6 +123,7 @@ public class ModuleSystem : MonoBehaviour
             currentModules.Remove(m);
             ModuleUIMenu.instance.UpdateCount(currentModules.Count);
             m.DeactivateModule();
+            ModuleAuduiSystem.instance.UpdateAudioTracks(currentModules.Count);
         }
     }
     public Module Pop()
@@ -175,6 +176,7 @@ public class ModuleSystem : MonoBehaviour
                 currentModules.Add(m);
             }
             ModuleUIMenu.instance.UpdateCount(currentModules.Count);
+            ModuleAuduiSystem.instance.UpdateAudioTracks(currentModules.Count);
             allModules[t].ActivateModule();
             return index;
         }
