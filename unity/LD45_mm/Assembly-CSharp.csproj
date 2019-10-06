@@ -64,6 +64,7 @@
      <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenProShortcuts.cs" />
      <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenTextMeshPro.cs" />
      <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenTk2d.cs" />
+     <Compile Include="Assets\Scripts\Enemies\BossHealth.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyBullet.cs" />
      <Compile Include="Assets\Scripts\Enemies\HornController.cs" />
      <Compile Include="Assets\Scripts\Enemies\PalletteController.cs" />

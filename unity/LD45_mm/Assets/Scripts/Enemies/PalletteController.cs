@@ -7,9 +7,14 @@ public class PalletteController : MonoBehaviour
     enum Mode {
         Attack,
         SuperShot,
-        Traverse
+        Traverse,
+        Hurt,
+        Dying
     };
     Rigidbody2D rb;
+    public Animator anim;
+    
+    public GameObject explosionPrefab;
     public bool isGrounded = false;
     public LayerMask groundLayer;
     public float collisionRadius = 1;
@@ -17,8 +22,6 @@ public class PalletteController : MonoBehaviour
     public Transform bottomOffset;
     
     public bool isFacingRight = true;
-    public float health = 100.0f;
-    private float currentHealth;
     public float speed = 5.0f;
     int attackCount;
     // Time that it takes the enemy to do its overall idle and evade cycle 
@@ -30,19 +33,23 @@ public class PalletteController : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject superShotPrefab;
     public Transform shootPosition;
-    public float bulletSpeed = 500.0f;
+    public float bulletSpeed = 150.0f;
     public float bulletLife = 1;
+    private bool canBeHit;
     Mode mode;
+    AudioSource[] audioSources;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
+        this.rb=GetComponent<Rigidbody2D>();
+        this.audioSources = GetComponents<AudioSource>();
         this.mode = Mode.Traverse;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
         this.attackCount = 0;
-        this.currentHealth = this.health;
+        this.canBeHit = true;
+        
     }
 
     // Update is called once per frame
@@ -50,24 +57,38 @@ public class PalletteController : MonoBehaviour
     {
         
         isGrounded = Physics2D.OverlapCircle(bottomOffset.position, collisionRadius, groundLayer);
-
+        anim.SetBool("isGrounded", isGrounded);
+        
         switch(mode){
             case Mode.Traverse:
                 if (this.executionTime > 0)
                 {
-                    this.rb.velocity = isFacingRight ? (new Vector2(this.speed * 2, this.rb.velocity.y)) : (new Vector2(-this.speed * 2, this.rb.velocity.y));
+                    this.rb.velocity = isFacingRight ? (new Vector2(this.speed * 2, this.rb.velocity.y)) : (new Vector2(-this.speed *2, this.rb.velocity.y));
                 } 
                 else 
                 {
-                    this.rb.velocity = new Vector2(0, this.speed);
+                    anim.SetBool("isShooting", true);
                     this.isFacingRight = !this.isFacingRight;
                     FaceDirection(isFacingRight);
                     this.executionTime = this.cycleTime;
-                    this.mode = (attackCount < 2) ? Mode.Attack : Mode.SuperShot;
+                    this.mode = (attackCount < 1) ? Mode.Attack : Mode.SuperShot;
+                }
+                break;
+            case Mode.Hurt:
+                if (this.executionTime > 2)
+                {
+                    anim.SetBool("isHurt", true);
+                } 
+                else 
+                {
+                    anim.SetBool("isHurt", false);
+                    this.mode = Mode.Traverse;
+                    this.canBeHit = true;
                 }
                 break;
             case Mode.Attack:
-                if(this.executionTime > 4)
+                this.rb.velocity = new Vector2(0, this.rb.velocity.y);
+                if(this.executionTime > this.cycleTime * 4)
                 {
                     this.rb.velocity = new Vector2(0, this.speed);
                     Fire(); 
@@ -80,16 +101,28 @@ public class PalletteController : MonoBehaviour
                     this.attackCount += 1;
                     this.executionTime = this.cycleTime;
                     this.mode = Mode.Traverse;
+                    anim.SetBool("isShooting", false);
                 } 
                 break;
             case Mode.SuperShot:
                 this.rb.velocity = new Vector2(0, 0);
-                if(this.executionTime < 0) 
+                if(this.executionTime < 3) 
                 {
                     SuperShot();
                     this.attackCount = 0;
                     this.executionTime = this.cycleTime;
                     this.mode = Mode.Traverse;
+                    anim.SetBool("isShooting", false);
+                }
+                break;
+            case Mode.Dying:
+                this.rb.velocity = new Vector2(0, 0);
+                ParticleSystem p = GameObject.Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+                anim.SetBool("isDead", true);
+                if(this.executionTime < 3) 
+                {
+                    this.audioSources[2].Play();
+                    Destroy(this.gameObject);
                 }
                 break;
             default:
@@ -101,7 +134,6 @@ public class PalletteController : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
         }
 
-        if(this.currentHealth <= 0.0f) Death();
         this.fireTimer -= Time.deltaTime;
         this.executionTime -= Time.deltaTime;
     }
@@ -117,9 +149,10 @@ public class PalletteController : MonoBehaviour
         if (this.fireTimer < 0.0f) 
         {
             Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
-            bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * new Vector2(1, 0) * bulletSpeed);
+            bullet.AddForce((isFacingRight ? new Vector2(1, 0) : new Vector2(-1, 0)) * bulletSpeed);
             Destroy(bullet.gameObject, bulletLife); 
             this.fireTimer = this.fireDelay;
+            audioSources[1].Play(1);
         }
     }
     void SuperShot()
@@ -127,11 +160,25 @@ public class PalletteController : MonoBehaviour
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
         bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
+        audioSources[1].Play(0);
     }
 
-    void Death()
+    public bool TakeDamage(){
+        if(canBeHit && (this.mode == Mode.Traverse || this.mode == Mode.Attack))
+        {
+            this.mode = Mode.Hurt;
+            this.canBeHit = false;
+            return true;
+        } 
+        else
+        {
+            return false;
+        }
+    }
+    public void Death()
     {
-        // todo: trigger death animation
-        Object.Destroy(this.gameObject);
+        audioSources[0].Play(0);
+        this.executionTime = this.cycleTime;
+        this.mode = Mode.Dying;
     }
 }

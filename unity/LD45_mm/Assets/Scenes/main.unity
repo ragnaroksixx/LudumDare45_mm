@@ -233,6 +233,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1591057288505352874, guid: 19d12943bcb101241980c038bde46a98,
+        type: 3}
+      propertyPath: cycleTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853735034183516483, guid: 19d12943bcb101241980c038bde46a98,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19d12943bcb101241980c038bde46a98, type: 3}
 --- !u!1 &496563990
@@ -722,10 +732,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 176714177, guid: 27d2840935f6966478d0fdbf92027552, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4455491521943131812, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
       propertyPath: m_Name
@@ -1034,6 +1040,40 @@ PrefabInstance:
     - target: {fileID: 2095603855845613830, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440158664161624076, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 281.69995
+      objectReference: {fileID: 0}
+    - target: {fileID: 176714177, guid: 27d2840935f6966478d0fdbf92027552, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975154826893528593, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975154826893528593, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975154826893528593, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975154826893528593, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975154826893528593, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
