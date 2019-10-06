@@ -107,7 +107,7 @@ class ChargeGunModule : AnimationChangeModuleGun
     }
     public override string GetTip()
     {
-        return base.GetTip() + " HOLD [SHIFT] or Mouse charge your shoot";
+        return base.GetTip() + " HOLD Mouse click to charge your shoot";
     }
 }
 class WalkModule : BasicModule

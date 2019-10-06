@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         mSystem.AddCollectedModule<ChargeGunModule>();
         mSystem.AddCollectedModule<EnemyHealthModule>();
         
+        
     }
 
     // Update is called once per frame

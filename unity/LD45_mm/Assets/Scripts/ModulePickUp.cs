@@ -17,10 +17,14 @@ public class ModulePickUp : MonoBehaviour
     public SpriteRenderer glow;
     Sequence gSeqScale, gSeqOpac;
 
+    public bool openExit;
+
     private void Update()
     {
         canGrabTime -= Time.deltaTime;
     }
+
+
     private void Start()
     {
         gSeqScale = DOTween.Sequence();
@@ -48,6 +52,10 @@ public class ModulePickUp : MonoBehaviour
                     ModuleAquiredUI.instance.Aquire(module);
                     ModuleSystem.instance.AddCollectedModule(moduleType);
                     Destroy(this.gameObject);
+                    if(openExit)
+                    {
+                        SceneTransitioner.instance.EnableSceneTransition();
+                    }
                 }
             }
         }
