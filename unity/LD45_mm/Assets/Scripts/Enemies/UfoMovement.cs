@@ -113,6 +113,8 @@ public class UfoMovement : MonoBehaviour
                 } 
                 else
                 {
+                    Pose pose = new Pose(transform.position, Quaternion.identity);
+                    ModuleSystem.instance.Spawn(typeof(GunModule), pose);
                     this.audioSources[2].Play(0);
                     Object.Destroy(this.gameObject);
                 }

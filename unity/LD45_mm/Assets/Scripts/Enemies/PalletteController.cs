@@ -44,7 +44,7 @@ public class PalletteController : MonoBehaviour
     {
         this.rb=GetComponent<Rigidbody2D>();
         this.audioSources = GetComponents<AudioSource>();
-        this.mode = Mode.Traverse;
+        this.mode = Mode.Dying;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
         this.attackCount = 0;
@@ -121,6 +121,8 @@ public class PalletteController : MonoBehaviour
                 anim.SetBool("isDead", true);
                 if(this.executionTime < 3) 
                 {
+                    Pose pose = new Pose(transform.position, Quaternion.identity);
+                    ModuleSystem.instance.Spawn(typeof(FullSightModule), pose);
                     this.audioSources[2].Play();
                     Destroy(this.gameObject);
                 }
