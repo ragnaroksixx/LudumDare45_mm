@@ -7,7 +7,7 @@ using TMPro;
 
 public class TutorialLeveleHelper : MonoBehaviour
 {
-    public Transform sightPos, jumpPosition, audioPos;
+    public Transform sightPos, jumpPosition, walkPos;
 
     private void Start()
     {
@@ -17,8 +17,8 @@ public class TutorialLeveleHelper : MonoBehaviour
         p = new Pose(jumpPosition.position, Quaternion.identity);
         ModuleSystem.instance.Spawn(typeof(JumpModule), p);
 
-        p = new Pose(audioPos.position, Quaternion.identity);
-        ModuleSystem.instance.Spawn(typeof(AudioModule), p);
+        p = new Pose(walkPos.position, Quaternion.identity);
+        ModuleSystem.instance.Spawn(typeof(WalkModule), p);
     }
 }
 

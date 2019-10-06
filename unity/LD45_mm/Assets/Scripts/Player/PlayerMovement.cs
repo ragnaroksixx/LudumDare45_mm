@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             if (mSystem.HasModule<WalkModule>())
                 Walk(input);
             else
-                Walk(Vector2.zero);
+                Walk(input / 2);
         }
 
         if ((isGrounded || Time.time < coyoteTimeTrack) && Input.GetKeyDown(KeyCode.Space) && mSystem.HasModule<JumpModule>())

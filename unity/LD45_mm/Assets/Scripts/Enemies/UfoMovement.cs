@@ -38,7 +38,7 @@ public class UfoMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         this.audioSources = GetComponents<AudioSource>();
-        this.mode = Mode.Dying;
+        this.mode = Mode.Hover;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
         this.currentHealth = this.health;

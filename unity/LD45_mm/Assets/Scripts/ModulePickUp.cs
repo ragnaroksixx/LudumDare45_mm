@@ -14,18 +14,42 @@ public class ModulePickUp : MonoBehaviour
     Sequence s;
     public SpriteRenderer image_1, image_2;
 
+    public SpriteRenderer glow;
+    Sequence gSeqScale, gSeqOpac;
+
     private void Update()
     {
         canGrabTime -= Time.deltaTime;
+    }
+    private void Start()
+    {
+        gSeqScale = DOTween.Sequence();
+        glow.transform.localScale = Vector3.one * 2;
+        float time = 0.9f;
+        float delay = 0.1f;
+        gSeqScale.Append(glow.transform.DOScale(0, time).SetDelay(delay * 2));
+        gSeqScale.Append(glow.transform.DOScale(2f, time).SetDelay(delay));
+        gSeqScale.SetLoops(-1);
 
+        gSeqOpac = DOTween.Sequence();
+        Color c = glow.color;
+        gSeqOpac.Append(glow.DOColor(new Color(), time).SetDelay(delay * 2));
+        gSeqOpac.Append(glow.DOColor(c, time).SetDelay(delay));
+        gSeqOpac.SetLoops(-1);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (canGrabTime <= 0 && collision.gameObject.tag == "Player")
         {
-            ModuleSystem.instance.AddCollectedModule(moduleType);
-            ModuleAquiredUI.instance.Aquire(module);
-            Destroy(this.gameObject);
+            if (ModuleSystem.instance.HasModule<CoreModule>() || moduleType == typeof(CoreModule))
+            {
+                if (ModuleSystem.instance.HasModule<WalkModule>() || moduleType == typeof(WalkModule) || module is FullSightModule || module is MonochromeModule)
+                {
+                    ModuleSystem.instance.AddCollectedModule(moduleType);
+                    ModuleAquiredUI.instance.Aquire(module);
+                    Destroy(this.gameObject);
+                }
+            }
         }
     }
 

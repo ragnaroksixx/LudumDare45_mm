@@ -44,7 +44,7 @@ public class PlayerShoot : MonoBehaviour
         }
         else if (Input.GetKeyUp(shootKey) && (ModuleSystem.instance.HasModule<GunModule>() || ModuleSystem.instance.HasModule<ChargeGunModule>()))
         {
-            if (chargeTrack >= chargeTime && ModuleSystem.instance.HasModule<GunModule>())
+            if (chargeTrack >= chargeTime && ModuleSystem.instance.HasModule<ChargeGunModule>())
                 Shoot(1.5f);
             else
                 Shoot();

@@ -95,11 +95,13 @@ public class ModuleUIObject : MonoBehaviour
 
     public void ShowAdd(bool show)
     {
+        if (moduleType == typeof(WalkModule)) show = false;
         addButton.gameObject.SetActive(show);
     }
 
     public void ShowRemove(bool show)
     {
+        if (moduleType == typeof(WalkModule)) show = false;
         removeButton.gameObject.SetActive(show);
     }
 

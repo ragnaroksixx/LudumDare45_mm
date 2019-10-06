@@ -64,7 +64,7 @@ abstract class TypeModule : Module
 class JumpModule : AnimationChangeModule
 {
     public override string Name => "jump";
-    public override int Priority => 3;
+    public override float Priority => 3;
 
     public JumpModule(SpriteRenderer s) : base(s)
     {
@@ -74,7 +74,7 @@ class JumpModule : AnimationChangeModule
 class AudioModule : AnimationChangeModule
 {
     public override string Name => "audio";
-    public override int Priority => 4;
+    public override float Priority => 4;
     public AudioModule(SpriteRenderer s) : base(s)
     {
 
@@ -83,7 +83,7 @@ class AudioModule : AnimationChangeModule
 class GunModule : AnimationChangeModuleGun
 {
     public override string Name => "fire";
-    public override int Priority => 3;
+    public override float Priority => 3;
     public GunModule(SpriteRenderer s) : base(s)
     {
 
@@ -92,7 +92,7 @@ class GunModule : AnimationChangeModuleGun
 class ChargeGunModule : AnimationChangeModuleGun
 {
     public override string Name => "charge.exe";
-    public override int Priority => 4;
+    public override float Priority => 4;
     public ChargeGunModule(SpriteRenderer s) : base(s)
     {
 
@@ -101,17 +101,28 @@ class ChargeGunModule : AnimationChangeModuleGun
 class WalkModule : BasicModule
 {
     public override string Name => "movement";
-    public override int Priority => 1;
+    public override float Priority => 1;
     public override void DeactivateModule()
     {
         base.DeactivateModule();
-        PlayerMovement.instance.Walk(Vector2.zero);
+        PlayerMovement.instance.anim.SetBool("crawl", true);
+    }
+
+    public override void ActivateModule()
+    {
+        base.ActivateModule();
+        PlayerMovement.instance.anim.SetBool("crawl", false);
+    }
+    public override void Default()
+    {
+        base.Default();
+        PlayerMovement.instance.anim.SetBool("crawl", true);
     }
 }
 class PlayerHealthModule : BasicModule
 {
     public override string Name => "hud";
-    public override int Priority => 5;
+    public override float Priority => 5;
     public override void DeactivateModule()
     {
         base.DeactivateModule();
@@ -132,7 +143,7 @@ class PlayerHealthModule : BasicModule
 class EnemyHealthModule : BasicModule
 {
     public override string Name => "enemy scanner";
-    public override int Priority => 5;
+    public override float Priority => 5;
     public override void DeactivateModule()
     {
         base.DeactivateModule();
@@ -164,7 +175,7 @@ class EnemyHealthModule : BasicModule
 class CoreModule : Module
 {
     public override string Name => "core32";
-    public override int Priority => 0;
+    public override float Priority => 0;
     public override void ActivateModule()
     {
     }
@@ -182,7 +193,7 @@ abstract class VisionModule : TypeModule
     public PostProcessProfile normal;
     public PostProcessVolume volume;
     static Tweener t;
-    public override int Priority => 2;
+    public override float Priority => .9f;
     public VisionModule(PostProcessVolume v, PostProcessProfile n)
     {
         normal = n;
