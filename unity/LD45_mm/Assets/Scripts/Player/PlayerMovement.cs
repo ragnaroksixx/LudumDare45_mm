@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
@@ -46,15 +47,25 @@ public class PlayerMovement : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
         mSystem = GetComponent<ModuleSystem>();
-        mSystem.AddCollectedModule<CoreModule>();
-        mSystem.AddCollectedModule<WalkModule>();
+        SavedData.Load();
+        foreach (Type t in SavedData.allTypes)
+        {
+            mSystem.AddCollectedModule(t);
+        }
 
+        if (SavedData.allTypes.Count == 0) //Starting new game
+        {
+            mSystem.AddCollectedModule<CoreModule>();
+        }
+        
+        mSystem.AddCollectedModule<WalkModule>();
         mSystem.AddCollectedModule<JumpModule>();
         mSystem.AddCollectedModule<GunModule>();
         mSystem.AddCollectedModule<MonochromeModule>();
         mSystem.AddCollectedModule<FullSightModule>();
         mSystem.AddCollectedModule<ChargeGunModule>();
         mSystem.AddCollectedModule<EnemyHealthModule>();
+        
     }
 
     // Update is called once per frame

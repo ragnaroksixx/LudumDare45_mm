@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthUI : HealthUI
 {
@@ -24,5 +25,14 @@ public class PlayerHealthUI : HealthUI
         base.InitUI(hs);
         LayoutRebuilder.ForceRebuildLayoutImmediate(transform as RectTransform);
         Destroy(GetComponent<ContentSizeFitter>());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1;
+        }
     }
 }

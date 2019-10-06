@@ -9,8 +9,13 @@ public class TutorialLeveleHelper : MonoBehaviour
 {
     public Transform sightPos, jumpPosition, walkPos;
 
+    private void Awake()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     private void Start()
     {
+
         Pose p = new Pose(sightPos.position, Quaternion.identity);
         ModuleSystem.instance.Spawn(typeof(MonochromeModule), p);
 

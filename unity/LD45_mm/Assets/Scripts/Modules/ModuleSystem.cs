@@ -58,6 +58,8 @@ public class ModuleSystem : MonoBehaviour
     }
     public void AddCollectedModule(Type t, bool activate = true)
     {
+        if (HasModule(t)) return;
+        SavedData.AddModule(t);
         ModuleUIObject ui = GameObject.Instantiate(uiPrefab);
         ui.Init(t, allModules[t], this);
         if (activate && CanAddComponent(t))

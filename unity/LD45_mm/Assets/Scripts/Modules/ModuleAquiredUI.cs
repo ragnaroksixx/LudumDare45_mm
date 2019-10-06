@@ -7,7 +7,7 @@ using TMPro;
 public class ModuleAquiredUI : MonoBehaviour
 {
     public Transform offScreenPos, onScreenPos;
-    public TMP_Text text;
+    public TMP_Text text,hint;
     public static ModuleAquiredUI instance;
 
     Sequence s;
@@ -27,12 +27,17 @@ public class ModuleAquiredUI : MonoBehaviour
     }
     public void Aquire(Module m)
     {
+        if (SavedData.HasCollectedModule(m.GetType())) return;
+
         string t = "Aquired: " + m.Name;
         text.text = t;
+        hint.text = m.GetTip();
+
+        if (s != null && !s.IsComplete()) s.Kill();
 
         s = DOTween.Sequence();
         Hide(0);
         s.Append(Show(.5f));
-        s.Append(Hide(1).SetDelay(.5f));
+        s.Append(Hide(1).SetDelay(3f));
     }
 }

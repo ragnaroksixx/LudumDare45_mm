@@ -17,7 +17,7 @@ public class ModuleUIMenu : MonoBehaviour
 
     public Dictionary<Type, ModuleUIObject> AllUIelements { get => allUIelements; set => allUIelements = value; }
     public bool IsOpen { get => open; set => open = value; }
-    public Image blackoutImage;
+    public CanvasGroup[] blackoutImages;
     public TMP_Text countText;
     Sequence s;
     private void Awake()

@@ -70,6 +70,10 @@ class JumpModule : AnimationChangeModule
     {
 
     }
+    public override string GetTip()
+    {
+        return base.GetTip() + " Press [SPACE] to Jump";
+    }
 }
 class AudioModule : AnimationChangeModule
 {
@@ -88,6 +92,10 @@ class GunModule : AnimationChangeModuleGun
     {
 
     }
+    public override string GetTip()
+    {
+        return base.GetTip() + " Press [SHIFT] or Mouse Click to Shoot";
+    }
 }
 class ChargeGunModule : AnimationChangeModuleGun
 {
@@ -96,6 +104,10 @@ class ChargeGunModule : AnimationChangeModuleGun
     public ChargeGunModule(SpriteRenderer s) : base(s)
     {
 
+    }
+    public override string GetTip()
+    {
+        return base.GetTip() + " HOLD [SHIFT] or Mouse charge your shoot";
     }
 }
 class WalkModule : BasicModule
@@ -117,6 +129,10 @@ class WalkModule : BasicModule
     {
         base.Default();
         PlayerMovement.instance.anim.SetBool("crawl", true);
+    }
+    public override string GetTip()
+    {
+        return base.GetTip() + " Increases you move speed";
     }
 }
 class PlayerHealthModule : BasicModule
@@ -171,6 +187,10 @@ class EnemyHealthModule : BasicModule
             eHP.Hide();
         }
     }
+    public override string GetTip()
+    {
+        return base.GetTip() + " Enemy HP is visible";
+    }
 }
 class CoreModule : Module
 {
@@ -182,9 +202,12 @@ class CoreModule : Module
 
     public override void DeactivateModule()
     {
-        Debug.LogError("Game Over");
+        PlayerHealth.instance.Die();
     }
-
+    public override string GetTip()
+    {
+        return base.GetTip() + " Remove this Module to restart the level";
+    }
 
 }
 abstract class VisionModule : TypeModule
@@ -210,7 +233,7 @@ abstract class VisionModule : TypeModule
         if (t != null && !t.IsComplete())
             t.Kill();
 
-        t = DOTween.To(() => getVignette(), x => setVignette(x), 0, 1).SetAutoKill(false);
+        t = DOTween.To(() => getVignette(), x => setVignette(x), 0, Time.timeScale).SetAutoKill(false);
 
     }
     public static void DisableSight()
@@ -218,17 +241,18 @@ abstract class VisionModule : TypeModule
         if (t != null && !t.IsComplete())
             t.Kill();
 
-        t = DOTween.To(() => getVignette(), x => setVignette(x), 1, 1).SetAutoKill(false);
+        t = DOTween.To(() => getVignette(), x => setVignette(x), 1, Time.timeScale).SetAutoKill(false);
     }
     public static float getVignette()
     {
-        return ModuleUIMenu.instance.blackoutImage.color.a;
+        return ModuleUIMenu.instance.blackoutImages[0].alpha;
     }
     public static void setVignette(float value)
     {
-        Color c = ModuleUIMenu.instance.blackoutImage.color;
-        c.a = value;
-        ModuleUIMenu.instance.blackoutImage.color = c;
+        foreach (CanvasGroup blackoutImage in ModuleUIMenu.instance.blackoutImages)
+        {
+            blackoutImage.alpha = value;
+        }
     }
 
     public override void Default()
@@ -239,7 +263,7 @@ abstract class VisionModule : TypeModule
 }
 class MonochromeModule : VisionModule
 {
-    public override string Name => "bw Sight";
+    public override string Name => "sight.bw";
 
     PostProcessProfile profile;
 
@@ -254,10 +278,14 @@ class MonochromeModule : VisionModule
         EnableSight();
     }
 
+    public override string GetTip()
+    {
+        return base.GetTip() + " See the world without color";
+    }
 }
 class FullSightModule : VisionModule
 {
-    public override string Name => "Sight";
+    public override string Name => "Sight.rgb";
     public FullSightModule(PostProcessVolume v, PostProcessProfile n) : base(v, n)
     {
 
@@ -277,6 +305,10 @@ class FullSightModule : VisionModule
     {
         base.Default();
         playerAnimationController.instance.SetVisibility(false, playerAnimationController.instance.hat);
+    }
+    public override string GetTip()
+    {
+        return base.GetTip() + " See the world in full color";
     }
 }
 

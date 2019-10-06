@@ -37,7 +37,7 @@ public class ModulePickUp : MonoBehaviour
         gSeqOpac.Append(glow.DOColor(c, time).SetDelay(delay));
         gSeqOpac.SetLoops(-1);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (canGrabTime <= 0 && collision.gameObject.tag == "Player")
         {
@@ -45,8 +45,8 @@ public class ModulePickUp : MonoBehaviour
             {
                 if (ModuleSystem.instance.HasModule<WalkModule>() || moduleType == typeof(WalkModule) || module is FullSightModule || module is MonochromeModule)
                 {
-                    ModuleSystem.instance.AddCollectedModule(moduleType);
                     ModuleAquiredUI.instance.Aquire(module);
+                    ModuleSystem.instance.AddCollectedModule(moduleType);
                     Destroy(this.gameObject);
                 }
             }
