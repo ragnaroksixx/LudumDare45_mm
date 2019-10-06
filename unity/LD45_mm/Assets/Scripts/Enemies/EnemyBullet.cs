@@ -18,6 +18,10 @@ public class EnemyBullet : MonoBehaviour
             collision.gameObject.GetComponentInParent<HealthScript>().TakeDamage(1);
             Destroy(this.gameObject);
         }
+        else if (collision.gameObject.layer == 31)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnDestroy()
