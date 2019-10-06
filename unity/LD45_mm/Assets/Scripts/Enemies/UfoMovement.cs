@@ -26,11 +26,13 @@ public class UfoMovement : MonoBehaviour
     public float bulletSpeed = 1000.0f;
     public float bulletLife = 1;
     Mode mode;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         this.mode = Mode.Hover;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
@@ -95,6 +97,9 @@ public class UfoMovement : MonoBehaviour
         if(this.currentHealth <= 0.0f) Death();
         this.fireTimer -= Time.deltaTime;
         this.executionTime -= Time.deltaTime;
+
+        // Animation update
+        anim.SetFloat("Health", this.health);
     }
 
     void Fire()
@@ -106,6 +111,11 @@ public class UfoMovement : MonoBehaviour
             Destroy(bullet.gameObject, bulletLife); 
             this.fireTimer = this.fireDelay;
             this.currentHealth -= (this.health * .1f);
+            anim.SetBool("isShooting", true);
+        }
+        else
+        {
+            anim.SetBool("isShooting", false);
         }
     }
     void SuperShot()
@@ -114,6 +124,7 @@ public class UfoMovement : MonoBehaviour
         bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
         this.health -= (this.health * .33f);
+        anim.SetBool("isShooting", true);
     }
 
     void Death()
