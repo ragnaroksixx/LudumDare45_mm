@@ -77,11 +77,13 @@
      <Compile Include="Assets\Scripts\Health\PlayerHealthUI.cs" />
      <Compile Include="Assets\Scripts\ModulePickUp.cs" />
      <Compile Include="Assets\Scripts\Modules\Module.cs" />
+     <Compile Include="Assets\Scripts\Modules\ModuleAquiredUI.cs" />
      <Compile Include="Assets\Scripts\Modules\Modules.cs" />
      <Compile Include="Assets\Scripts\Modules\ModuleSystem.cs" />
      <Compile Include="Assets\Scripts\Modules\ModuleUIMenu.cs" />
      <Compile Include="Assets\Scripts\Modules\ModuleUIObject.cs" />
      <Compile Include="Assets\Scripts\PatrolMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\playerAnimationController.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerShoot.cs" />
      <Compile Include="Assets\Scripts\PlayerBullet.cs" />

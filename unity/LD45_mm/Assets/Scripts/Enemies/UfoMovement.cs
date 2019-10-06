@@ -10,6 +10,7 @@ public class UfoMovement : MonoBehaviour
         Hover,
         Dying
     };
+    AudioSource[] audioSources;
     public GameObject explosionPrefab;
     Rigidbody2D rb;
     public float health = 100.0f;
@@ -27,6 +28,7 @@ public class UfoMovement : MonoBehaviour
     public Transform shootPosition;
     public float bulletSpeed = 1000.0f;
     public float bulletLife = 1;
+    private bool deathSoundPlayed = false;
     Mode mode;
     Animator anim;
 
@@ -35,7 +37,8 @@ public class UfoMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        this.mode = Mode.Hover;
+        this.audioSources = GetComponents<AudioSource>();
+        this.mode = Mode.Dying;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
         this.currentHealth = this.health;
@@ -65,7 +68,7 @@ public class UfoMovement : MonoBehaviour
                 break;
             case Mode.Attack:
                 this.rb.velocity = new Vector2(0, 0);
-                if(this.executionTime < 0)
+                if(this.executionTime < this.cycleTime * .3)
                 {
                     SuperShot();  
                     this.executionTime = this.cycleTime;
@@ -96,12 +99,21 @@ public class UfoMovement : MonoBehaviour
                 }
                 break;
             case Mode.Dying:
-                if (this.executionTime > 0) {
-                    this.rb.velocity = new Vector2(0, (float)(this.speed * -.3));
+                if(!deathSoundPlayed)
+                {
+                    this.audioSources[2].Play(0);
+                    this.deathSoundPlayed = true;
+
+                }
+
+                if (this.executionTime > this.cycleTime * .5) {
+                    this.rb.velocity = new Vector2(0, (float)(this.speed * -.6));
                     ParticleSystem p = GameObject.Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+                    this.audioSources[1].Play(0);
                 } 
                 else
                 {
+                    this.audioSources[2].Play(0);
                     Object.Destroy(this.gameObject);
                 }
                 break;
@@ -123,6 +135,7 @@ public class UfoMovement : MonoBehaviour
             this.fireTimer = this.fireDelay;
             this.currentHealth -= (this.health * .1f);
             anim.SetBool("isShooting", true);
+            this.audioSources[1].Play(0);
         }
         else
         {
@@ -131,6 +144,7 @@ public class UfoMovement : MonoBehaviour
     }
     void SuperShot()
     {
+        this.audioSources[1].Play(0);
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
         bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
