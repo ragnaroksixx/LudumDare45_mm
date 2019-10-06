@@ -28,6 +28,15 @@ public class ModuleUIObject : MonoBehaviour
 
         ModuleUIMenu.instance.AllUIelements.Add(t, this);
     }
+
+    public void Uninit()
+    {
+        ModuleUIMenu.instance.AllUIelements.Remove(moduleType);
+        transform.SetParent(null);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(moduleSystem.attachedList.transform as RectTransform);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(moduleSystem.unattachedList.transform as RectTransform);
+        Destroy(this.gameObject);
+    }
     public void AllowEdit(bool val)
     {
         if (val)
@@ -57,8 +66,9 @@ public class ModuleUIObject : MonoBehaviour
             return;
         }
 
-        moduleSystem.ActivateModule(moduleType);
+        int index = moduleSystem.ActivateModule(moduleType);
         transform.SetParent(moduleSystem.attachedList, false);
+        transform.SetSiblingIndex(index);
         transform.localScale = Vector3.one;
         transform.localRotation = Quaternion.identity;
 

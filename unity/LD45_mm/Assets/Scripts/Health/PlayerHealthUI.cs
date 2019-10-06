@@ -6,8 +6,9 @@ public class PlayerHealthUI : HealthUI
 {
     public GameObject[] hearts;
     public static PlayerHealthUI instance;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
     }
     public override void UpdateUI(HealthScript hs)

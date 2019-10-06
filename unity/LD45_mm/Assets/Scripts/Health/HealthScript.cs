@@ -13,7 +13,7 @@ public class HealthScript : MonoBehaviour
     public SpriteRenderer image;
     Color normal;
     Sequence s;
-    public virtual void Start()
+    public void Start()
     {
         normal = image.color;
         currentHP = maxHP;

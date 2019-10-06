@@ -33,7 +33,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PlayerTrigger
   - Enemy
   - Player
   - PlayerBullet

@@ -22,23 +22,27 @@ abstract class TypeModule : Module
 class JumpModule : BasicModule
 {
     public override string Name => "jump";
+    public override int Priority => 3;
 }
 class AudioModule : BasicModule
 {
     public override string Name => "audio";
+    public override int Priority => 4;
 }
 class GunModule : BasicModule
 {
     public override string Name => "fire";
+    public override int Priority => 3;
 }
 class ChargeGunModule : BasicModule
 {
     public override string Name => "charge.exe";
+    public override int Priority => 4;
 }
 class WalkModule : BasicModule
 {
     public override string Name => "movement";
-
+    public override int Priority => 1;
     public override void DeactivateModule()
     {
         base.DeactivateModule();
@@ -48,7 +52,7 @@ class WalkModule : BasicModule
 class PlayerHealthModule : BasicModule
 {
     public override string Name => "hud";
-
+    public override int Priority => 5;
     public override void DeactivateModule()
     {
         base.DeactivateModule();
@@ -69,17 +73,39 @@ class PlayerHealthModule : BasicModule
 class EnemyHealthModule : BasicModule
 {
     public override string Name => "enemy scanner";
-
+    public override int Priority => 5;
     public override void DeactivateModule()
     {
         base.DeactivateModule();
-        PlayerMovement.instance.Walk(Vector2.zero);
+        EnemyHealthUI[] eHPs = GameObject.FindObjectsOfType<EnemyHealthUI>();
+        foreach (EnemyHealthUI eHP in eHPs)
+        {
+            eHP.Hide();
+        }
+    }
+    public override void ActivateModule()
+    {
+        base.ActivateModule();
+        EnemyHealthUI[] eHPs = GameObject.FindObjectsOfType<EnemyHealthUI>();
+        foreach (EnemyHealthUI eHP in eHPs)
+        {
+            eHP.Show();
+        }
+    }
+    public override void Default()
+    {
+        base.Default();
+        EnemyHealthUI[] eHPs = GameObject.FindObjectsOfType<EnemyHealthUI>();
+        foreach (EnemyHealthUI eHP in eHPs)
+        {
+            eHP.Hide();
+        }
     }
 }
 class CoreModule : Module
 {
     public override string Name => "core32";
-
+    public override int Priority => 0;
     public override void ActivateModule()
     {
     }
@@ -88,6 +114,8 @@ class CoreModule : Module
     {
         Debug.LogError("Game Over");
     }
+
+
 }
 abstract class VisionModule : TypeModule
 {
@@ -95,7 +123,7 @@ abstract class VisionModule : TypeModule
     public PostProcessProfile normal;
     public PostProcessVolume volume;
     static Tweener t;
-    
+    public override int Priority => 2;
     public VisionModule(PostProcessVolume v, PostProcessProfile n)
     {
         normal = n;
@@ -132,6 +160,11 @@ abstract class VisionModule : TypeModule
         ModuleUIMenu.instance.blackoutImage.color = c;
     }
 
+    public override void Default()
+    {
+        base.Default();
+        DisableSight();
+    }
 }
 class MonochromeModule : VisionModule
 {

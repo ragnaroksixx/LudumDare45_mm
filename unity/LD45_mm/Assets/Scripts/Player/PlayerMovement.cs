@@ -43,11 +43,13 @@ public class PlayerMovement : MonoBehaviour
         mSystem = GetComponent<ModuleSystem>();
         mSystem.AddCollectedModule<CoreModule>();
         mSystem.AddCollectedModule<WalkModule>();
-        mSystem.AddCollectedModule<JumpModule>();
+        //mSystem.AddCollectedModule<JumpModule>();
         mSystem.AddCollectedModule<GunModule>();
         mSystem.AddCollectedModule<MonochromeModule>();
         mSystem.AddCollectedModule<FullSightModule>();
         mSystem.AddCollectedModule<ChargeGunModule>();
+        //mSystem.AddCollectedModule<PlayerHealthModule>();
+        mSystem.AddCollectedModule<EnemyHealthModule>();
     }
 
     // Update is called once per frame
@@ -87,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (mSystem.HasModule<WalkModule>())
                 Walk(input);
+            else
+                Walk(Vector2.zero);
         }
 
         if ((isGrounded || Time.time < coyoteTimeTrack) && Input.GetKeyDown(KeyCode.Space) && mSystem.HasModule<JumpModule>())

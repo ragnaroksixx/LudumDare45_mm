@@ -3,6 +3,13 @@ using System.Collections;
 
 public class HealthUI : MonoBehaviour
 {
+    public CanvasGroup g;
+    protected virtual void Awake()
+    {
+        g = GetComponent<CanvasGroup>();
+        if (g == null)
+            g = gameObject.AddComponent<CanvasGroup>();
+    }
     public virtual void UpdateUI(HealthScript hs)
     {
 
@@ -14,11 +21,11 @@ public class HealthUI : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        g.alpha = 1;
     }
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        g.alpha = 0;
     }
 }
