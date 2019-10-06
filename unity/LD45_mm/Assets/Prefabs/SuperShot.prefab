@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5719963664383814582}
   - component: {fileID: 5719963664383814576}
   - component: {fileID: 5719963664383814577}
-  m_Layer: 30
+  m_Layer: 28
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5719963665166919131}
   - component: {fileID: 6711393000283564184}
   - component: {fileID: 7682081452614529060}
-  m_Layer: 30
+  m_Layer: 28
   m_Name: SuperShot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6017349644448870509}
   - component: {fileID: 2034004991498104510}
-  m_Layer: 29
+  m_Layer: 28
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

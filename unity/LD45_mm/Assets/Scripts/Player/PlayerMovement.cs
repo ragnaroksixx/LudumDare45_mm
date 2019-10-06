@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         mSystem = GetComponent<ModuleSystem>();
         mSystem.AddCollectedModule<CoreModule>();
         mSystem.AddCollectedModule<WalkModule>();
-        //mSystem.AddCollectedModule<JumpModule>();
+        mSystem.AddCollectedModule<JumpModule>();
         mSystem.AddCollectedModule<GunModule>();
         mSystem.AddCollectedModule<MonochromeModule>();
         mSystem.AddCollectedModule<FullSightModule>();

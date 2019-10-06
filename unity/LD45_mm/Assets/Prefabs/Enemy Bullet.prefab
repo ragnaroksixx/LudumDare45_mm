@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5536767628358630652}
   - component: {fileID: 5536767628358630650}
   - component: {fileID: 5536767628358630651}
-  m_Layer: 30
+  m_Layer: 28
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5536767629192458897}
   - component: {fileID: 6815142604091326418}
   - component: {fileID: 4937239681054224773}
-  m_Layer: 30
+  m_Layer: 28
   m_Name: Enemy Bullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7874624326182321733}
   - component: {fileID: 7924611848950848932}
-  m_Layer: 29
+  m_Layer: 28
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

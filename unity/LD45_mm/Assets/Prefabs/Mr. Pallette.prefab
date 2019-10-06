@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8434122692123675671}
   - component: {fileID: 8434122692123675670}
-  m_Layer: 29
+  m_Layer: 28
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8434122692189921779}
   - component: {fileID: 8434122692189921778}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8434122692499664356}
   - component: {fileID: 8434122692499664357}
   - component: {fileID: 8434122692499664359}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Mr. Pallette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8434122692567425293}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8434122693722038805}
-  m_Layer: 29
+  m_Layer: 28
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
