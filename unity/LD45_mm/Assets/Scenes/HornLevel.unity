@@ -686,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884498836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.483, y: 0.042, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0.042, z: 0}
   m_LocalScale: {x: 0.5, y: 0.24, z: 1}
   m_Children:
   - {fileID: 130383768}
@@ -936,7 +936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676025822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46, y: 1.34, z: 0}
+  m_LocalPosition: {x: -2.46, y: 3.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1369763634}
@@ -953,7 +953,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676025822}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -980,8 +980,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   speed: 3
-  fireDelay: 1
-  cycleTime: 1
+  fireDelay: 0.3
+  cycleTime: 2
   attackTime: 3
   bulletPrefab: {fileID: 5536767629192458898, guid: fe3ff3b4874a4bd4ab0cf7cb51dbc655,
     type: 3}

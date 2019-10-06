@@ -7,8 +7,10 @@ public class UfoMovement : MonoBehaviour
     enum Mode {
         Attack,
         Evade,
-        Hover
+        Hover,
+        Dying
     };
+    public GameObject explosionPrefab;
     Rigidbody2D rb;
     public float health = 100.0f;
     private float currentHealth;
@@ -42,6 +44,8 @@ public class UfoMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(this.currentHealth <= 0.0f) this.mode = Mode.Dying;
+
         switch(mode){
             case Mode.Hover:
                 if (this.executionTime > (this.cycleTime * .5))
@@ -91,10 +95,17 @@ public class UfoMovement : MonoBehaviour
                     this.mode = Mode.Hover;
                 }
                 break;
-            default:
+            case Mode.Dying:
+                if (this.executionTime > 0) {
+                    this.rb.velocity = new Vector2(0, (float)(this.speed * -.3));
+                    ParticleSystem p = GameObject.Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+                } 
+                else
+                {
+                    Object.Destroy(this.gameObject);
+                }
                 break;
         }
-        if(this.currentHealth <= 0.0f) Death();
         this.fireTimer -= Time.deltaTime;
         this.executionTime -= Time.deltaTime;
 
@@ -125,11 +136,5 @@ public class UfoMovement : MonoBehaviour
         Destroy(bullet.gameObject, bulletLife); 
         this.health -= (this.health * .33f);
         anim.SetBool("isShooting", true);
-    }
-
-    void Death()
-    {
-        // todo: trigger death animation
-        Object.Destroy(this.gameObject);
     }
 }

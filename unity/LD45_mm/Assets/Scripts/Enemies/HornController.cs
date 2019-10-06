@@ -8,7 +8,8 @@ public class HornController : MonoBehaviour
         TraverseVertical,
         TraverseLeft,
         TraverseRight,
-        Attack
+        Attack,
+        Dying
     };
     Rigidbody2D rb;
     private bool isFacingRight = true;
@@ -43,17 +44,27 @@ public class HornController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(this.health < 0.0f) this.mode = Mode.Dying;
+
         switch(mode){
             case Mode.TraverseVertical:
                 if (this.executionTime > 0)
                 {
                     this.rb.velocity = this.isLocatedBottom ? new Vector2(0.0f, this.speed) : new Vector2(0.0f, -this.speed);
+                    Fire();
                 } 
                 else 
                 {
                     this.isLocatedBottom = true;
-                    this.mode = Mode.TraverseRight;
                     this.executionTime = this.cycleTime;
+                    if (isFacingRight)
+                    {
+                        this.mode = Mode.TraverseRight;
+                    }
+                    else
+                    {
+                        this.mode = Mode.TraverseLeft;
+                    }
                 }
                 break;
             case Mode.TraverseRight:
@@ -67,14 +78,7 @@ public class HornController : MonoBehaviour
                     FaceDirection(isFacingRight);
                     this.isLocatedBottom = !this.isLocatedBottom;
                     this.executionTime = this.cycleTime;
-                    // if (isFacingRight)
-                    // {
-                    //     this.mode = Mode.TraverseRight;
-                    // }
-                    // else if (!this.isFacingRight)
-                    // {
-                    //     this.mode = Mode.TraverseLeft;
-                    // }
+                    this.fireTimer = this.fireDelay;
                     this.mode = Mode.TraverseVertical;
                 }
                 break;
@@ -89,14 +93,8 @@ public class HornController : MonoBehaviour
                     FaceDirection(isFacingRight);
                     this.isLocatedBottom = !this.isLocatedBottom;
                     this.executionTime = this.cycleTime;
-                    if (isFacingRight)
-                    {
-                        this.mode = Mode.TraverseRight;
-                    }
-                    else if (!this.isFacingRight)
-                    {
-                        this.mode = Mode.TraverseLeft;
-                    }
+                    this.fireTimer = this.fireDelay;
+                    this.mode = Mode.TraverseVertical;
                 }
                 break;
             case Mode.Attack:
@@ -108,10 +106,16 @@ public class HornController : MonoBehaviour
                     
                 } 
                 break;
-            default:
+            case Mode.Dying:
+                if (this.executionTime > 0) {
+                    this.rb.velocity = new Vector2(0, (float)(this.speed * -.3));
+                } 
+                else
+                {
+                    Object.Destroy(this.gameObject);
+                }
                 break;
         }
-        if(this.currentHealth <= 0.0f) Death();
         this.fireTimer -= Time.deltaTime;
         this.executionTime -= Time.deltaTime;
     }
@@ -127,21 +131,16 @@ public class HornController : MonoBehaviour
         if (this.fireTimer < 0.0f) 
         {
             Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
-            bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
+            bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * new Vector2(1, 0) * bulletSpeed);
             Destroy(bullet.gameObject, bulletLife); 
             this.fireTimer = this.fireDelay;
         }
     }
+
     void SuperShot()
     {
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
         bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
-    }
-
-    void Death()
-    {
-        // todo: trigger death animation
-        Object.Destroy(this.gameObject);
     }
 }
