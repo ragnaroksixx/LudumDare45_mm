@@ -43,13 +43,13 @@ public class PlayerMovement : MonoBehaviour
         mSystem = GetComponent<ModuleSystem>();
         mSystem.AddCollectedModule<CoreModule>();
         mSystem.AddCollectedModule<WalkModule>();
-        mSystem.AddCollectedModule<JumpModule>();
-        mSystem.AddCollectedModule<GunModule>();
-        mSystem.AddCollectedModule<MonochromeModule>();
-        mSystem.AddCollectedModule<FullSightModule>();
-        mSystem.AddCollectedModule<ChargeGunModule>();
-        //mSystem.AddCollectedModule<PlayerHealthModule>();
-        mSystem.AddCollectedModule<EnemyHealthModule>();
+        mSystem.AddCollectedModule<JumpModule>(true);
+        mSystem.AddCollectedModule<GunModule>(true);
+        //mSystem.AddCollectedModule<MonochromeModule>(false);
+        mSystem.AddCollectedModule<FullSightModule>(true);
+        mSystem.AddCollectedModule<ChargeGunModule>(true);
+        //mSystem.AddCollectedModule<PlayerHealthModule>(false);
+        mSystem.AddCollectedModule<EnemyHealthModule>(false);
     }
 
     // Update is called once per frame

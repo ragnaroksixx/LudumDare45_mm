@@ -12,7 +12,7 @@ public class TutorialLeveleHelper : MonoBehaviour
     private void Start()
     {
         Pose p = new Pose(pos.position, pos.rotation);
-        ModuleSystem.instance.Spawn(typeof(JumpModule), p);
+        ModuleSystem.instance.Spawn(typeof(MonochromeModule), p);
     }
 }
 
