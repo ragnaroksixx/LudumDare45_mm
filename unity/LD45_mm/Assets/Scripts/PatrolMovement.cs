@@ -16,12 +16,13 @@ class PatrolMovement : MonoBehaviour
     Transform target;
     public SpriteRenderer image;
 
-    public Transform targetA, targetB;
-
+    public Transform[] targets;
+    int index = 0;
+    public bool ignoreY;
     void Start()
     {
         rBody = GetComponentInChildren<Rigidbody2D>();
-        target = targetA;
+        target = targets[index];
     }
     void Update()
     {
@@ -30,17 +31,28 @@ class PatrolMovement : MonoBehaviour
 
         input = Vector2.zero;
 
-        float distFromTar = target.position.x - rBody.transform.position.x;
+        Vector2 distFromTar = (target.position - rBody.transform.position);
 
-        if (Mathf.Abs(distFromTar) > 0.1f)
+        if (distFromTar.magnitude > 0.1f)
         {
-            if (distFromTar < 0)
+            if (distFromTar.x < -0.01f)
             {
                 input.x -= 1;
             }
-            else
+            else if (distFromTar.x > 0.01f)
             {
                 input.x += 1;
+            }
+            if (!ignoreY)
+            {
+                if (distFromTar.y < -0.01f)
+                {
+                    input.y -= 1;
+                }
+                else if (distFromTar.y > .01f)
+                {
+                    input.y += 1;
+                }
             }
 
             if (input.x > 0 && !isFacingRight)
@@ -48,21 +60,25 @@ class PatrolMovement : MonoBehaviour
             else if (input.x < 0 && isFacingRight)
                 FaceDirection(false);
 
+            input.Normalize();
             Walk(input);
         }
         else
         {
-            if (target == targetA)
-                target = targetB;
-            else
-                target = targetA;
+            index++;
+            if (index >= targets.Length)
+                index = 0;
+            target = targets[index];
         }
 
     }
     public void Walk(Vector2 i)
     {
         i *= speed;
-        rBody.velocity = new Vector2(i.x, rBody.velocity.y);
+        if (ignoreY)
+            rBody.velocity = new Vector2(i.x, rBody.velocity.y);
+        else
+            rBody.velocity = i;
     }
     void FaceDirection(bool right)
     {

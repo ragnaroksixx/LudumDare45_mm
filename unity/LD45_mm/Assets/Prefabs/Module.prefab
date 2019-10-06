@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4784477084204011458}
   - component: {fileID: 4784477084204011485}
   - component: {fileID: 4784477084204011484}
-  m_Layer: 29
+  m_Layer: 26
   m_Name: Module
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4784477084405109222}
   - component: {fileID: 4784477084405109217}
-  m_Layer: 29
+  m_Layer: 26
   m_Name: New Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 4784477084865469179}
   - component: {fileID: 4784477084865469176}
   - component: {fileID: 4784477084865469177}
-  m_Layer: 29
+  m_Layer: 26
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4784477085145453203}
   - component: {fileID: 4784477085145453202}
-  m_Layer: 29
+  m_Layer: 26
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4784477085836235803}
   - component: {fileID: 4784477085836235802}
-  m_Layer: 29
+  m_Layer: 26
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

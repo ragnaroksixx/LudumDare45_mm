@@ -14,30 +14,89 @@ abstract class BasicModule : Module
     {
     }
 }
+abstract class AnimationChangeModule : Module
+{
+    SpriteRenderer sr;
+    public AnimationChangeModule(SpriteRenderer s)
+    {
+        sr = s;
+    }
+    public override void ActivateModule()
+    {
+        playerAnimationController.instance.SetVisibility(true, sr);
+    }
+    public override void DeactivateModule()
+    {
+        playerAnimationController.instance.SetVisibility(false, sr);
+    }
+    public override void Default()
+    {
+        base.Default();
+        DeactivateModule();
+    }
+}
+abstract class AnimationChangeModuleGun : AnimationChangeModule
+{
+    public AnimationChangeModuleGun(SpriteRenderer s) : base(s)
+    {
+    }
+    public override void ActivateModule()
+    {
+        base.ActivateModule();
+        playerAnimationController.instance.SetVisibility(true, playerAnimationController.instance.playerGun);
+        playerAnimationController.instance.SetVisibility(false, playerAnimationController.instance.playerNoGun);
+    }
+    public override void DeactivateModule()
+    {
+        base.DeactivateModule();
+        if (ModuleSystem.instance.HasModule<GunModule>() || ModuleSystem.instance.HasModule<ChargeGunModule>()) return;
+
+        playerAnimationController.instance.SetVisibility(false, playerAnimationController.instance.playerGun);
+        playerAnimationController.instance.SetVisibility(true, playerAnimationController.instance.playerNoGun);
+    }
+
+}
 abstract class TypeModule : Module
 {
     public abstract string Caterorgy { get; }
 }
 
-class JumpModule : BasicModule
+class JumpModule : AnimationChangeModule
 {
     public override string Name => "jump";
     public override int Priority => 3;
+
+    public JumpModule(SpriteRenderer s) : base(s)
+    {
+
+    }
 }
-class AudioModule : BasicModule
+class AudioModule : AnimationChangeModule
 {
     public override string Name => "audio";
     public override int Priority => 4;
+    public AudioModule(SpriteRenderer s) : base(s)
+    {
+
+    }
 }
-class GunModule : BasicModule
+class GunModule : AnimationChangeModuleGun
 {
     public override string Name => "fire";
     public override int Priority => 3;
+    public GunModule(SpriteRenderer s) : base(s)
+    {
+
+    }
 }
-class ChargeGunModule : BasicModule
+class ChargeGunModule : AnimationChangeModuleGun
 {
     public override string Name => "charge.exe";
     public override int Priority => 4;
+    public ChargeGunModule(SpriteRenderer s) : base(s)
+    {
+
+    }
 }
 class WalkModule : BasicModule
 {
@@ -129,6 +188,7 @@ abstract class VisionModule : TypeModule
         normal = n;
         volume = v;
     }
+
     public override void DeactivateModule()
     {
         volume.profile = normal;
@@ -163,7 +223,7 @@ abstract class VisionModule : TypeModule
     public override void Default()
     {
         base.Default();
-        DisableSight();
+        setVignette(1);
     }
 }
 class MonochromeModule : VisionModule
@@ -189,11 +249,23 @@ class FullSightModule : VisionModule
     public override string Name => "Sight";
     public FullSightModule(PostProcessVolume v, PostProcessProfile n) : base(v, n)
     {
+
     }
     public override void ActivateModule()
     {
         volume.profile = normal;
         EnableSight();
+        playerAnimationController.instance.SetVisibility(true, playerAnimationController.instance.hat);
+    }
+    public override void DeactivateModule()
+    {
+        base.DeactivateModule();
+        playerAnimationController.instance.SetVisibility(false, playerAnimationController.instance.hat);
+    }
+    public override void Default()
+    {
+        base.Default();
+        playerAnimationController.instance.SetVisibility(false, playerAnimationController.instance.hat);
     }
 }
 

@@ -1,7 +1,202 @@
 fileFormatVersion: 2
 guid: 7805433c8f56f4408a18ee2770bba81a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8436795881906628753
+    second: null large concept_0
+  - first:
+      213: -5477202043300777048
+    second: null large concept_1
+  - first:
+      213: -3545573588848859317
+    second: null large concept_2
+  - first:
+      213: -4454500853739995135
+    second: null large concept_3
+  - first:
+      213: 5638772621468556536
+    second: null large concept_4
+  - first:
+      213: 5565934824778956563
+    second: null large concept_5
+  - first:
+      213: -4018298959309414921
+    second: null large concept_6
+  - first:
+      213: -5684234627582233380
+    second: null large concept_7
+  - first:
+      213: -8724297231280654041
+    second: null large concept_8
+  - first:
+      213: 4266194923643249639
+    second: null large concept_9
+  - first:
+      213: -319117980922989171
+    second: null large concept_10
+  - first:
+      213: 7284011164974543282
+    second: null large concept_11
+  - first:
+      213: -8396287402681645535
+    second: null large concept_12
+  - first:
+      213: 8278421222266315184
+    second: null large concept_13
+  - first:
+      213: 2885395603716650489
+    second: null large concept_14
+  - first:
+      213: -1809652802393461394
+    second: null large concept_15
+  - first:
+      213: 9145335741591883913
+    second: null large concept_16
+  - first:
+      213: 8333013196326227174
+    second: null large concept_17
+  - first:
+      213: -7793758827691058045
+    second: null large concept_18
+  - first:
+      213: -6553996441696368842
+    second: null large concept_19
+  - first:
+      213: -3730089119782347386
+    second: null large concept_20
+  - first:
+      213: -8736212209935577225
+    second: null large concept_21
+  - first:
+      213: 4074376605542489796
+    second: null large concept_22
+  - first:
+      213: -4461450686473372235
+    second: null large concept_23
+  - first:
+      213: 4034800722233752462
+    second: null large concept_24
+  - first:
+      213: 4141953354031604209
+    second: null large concept_25
+  - first:
+      213: 8959446093923862142
+    second: null large concept_26
+  - first:
+      213: 865545157967685297
+    second: null large concept_27
+  - first:
+      213: 6396259832362059798
+    second: null large concept_28
+  - first:
+      213: 2129217056212719278
+    second: null large concept_29
+  - first:
+      213: 1128714196832605064
+    second: null large concept_30
+  - first:
+      213: -627120136019943634
+    second: null large concept_31
+  - first:
+      213: -157665095669735769
+    second: null large concept_32
+  - first:
+      213: 4371763480955107636
+    second: null large concept_33
+  - first:
+      213: -8388816692111759829
+    second: null large concept_34
+  - first:
+      213: -1416783920073335276
+    second: null large concept_35
+  - first:
+      213: 2969936845362088815
+    second: null large concept_36
+  - first:
+      213: -3628473549271457609
+    second: null large concept_37
+  - first:
+      213: 2191522746080172728
+    second: null large concept_38
+  - first:
+      213: -2355999085903891465
+    second: null large concept_39
+  - first:
+      213: 1483819949891671325
+    second: null large concept_40
+  - first:
+      213: 4859674974407598298
+    second: null large concept_41
+  - first:
+      213: 119887543711100023
+    second: null large concept_42
+  - first:
+      213: -6815858474422864750
+    second: null large concept_43
+  - first:
+      213: 1922782756182260704
+    second: null large concept_44
+  - first:
+      213: 812463289136968691
+    second: null large concept_45
+  - first:
+      213: -3343892288036837796
+    second: null large concept_46
+  - first:
+      213: -4818087143613000193
+    second: null large concept_47
+  - first:
+      213: 5289146051740608680
+    second: null large concept_48
+  - first:
+      213: 2455101015435594157
+    second: null large concept_49
+  - first:
+      213: -7396726605276069092
+    second: null large concept_50
+  - first:
+      213: -2770457197198350316
+    second: null large concept_51
+  - first:
+      213: 712119836295756988
+    second: null large concept_52
+  - first:
+      213: 3309213329227373997
+    second: null large concept_53
+  - first:
+      213: -3435839369413277080
+    second: null large concept_54
+  - first:
+      213: -2511210066180437696
+    second: null large concept_55
+  - first:
+      213: 6028664469919770592
+    second: null large concept_56
+  - first:
+      213: -3784926351347863216
+    second: null large concept_57
+  - first:
+      213: 2383543981376085324
+    second: null large concept_58
+  - first:
+      213: -2965179354315565191
+    second: null large concept_59
+  - first:
+      213: 8831053851992069122
+    second: null large concept_60
+  - first:
+      213: -4126404980429801480
+    second: null large concept_61
+  - first:
+      213: -5693664805415542178
+    second: null large concept_62
+  - first:
+      213: -2099727165484355201
+    second: null large concept_63
+  - first:
+      213: -7779309000721731444
+    second: null large concept_64
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -31,7 +226,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,12 +235,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,7 +258,43 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,7 +303,1372 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: null large concept_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb8a550f8344ff43a402dc3dfbf355d
+      internalID: -8436795881906628753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 642d4ae8f7c70dc48ac3e84b2f2f41e3
+      internalID: -5477202043300777048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0b7f6f9ce805d46a2c85d1baed377d
+      internalID: -3545573588848859317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127f50e1dbe06974cb6c9b2b5a31c19f
+      internalID: -4454500853739995135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e272851e50cfa040951077cc83330aa
+      internalID: 5638772621468556536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039b737eb0f3141438be946d27d8dba3
+      internalID: 5565934824778956563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_6
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ee48094992862478e847feb7707cd4
+      internalID: -4018298959309414921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_7
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 547.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3566b3778e0bee843866b4bb64805784
+      internalID: -5684234627582233380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9771c210df0c141847c81595af4ec9
+      internalID: -8724297231280654041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_9
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa93d7d08515064e9fda62367fc5d66
+      internalID: 4266194923643249639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_10
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e78b8646b27f240ae7869bcd3725f9
+      internalID: -319117980922989171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_11
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 433b8f1e9bb318c46bb5f4a9c6b0288a
+      internalID: 7284011164974543282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_12
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56b71d8f064fd974a98b63fa77a0a36c
+      internalID: -8396287402681645535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_13
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9eb5955ac422e46a32ab8d1ed1c933
+      internalID: 8278421222266315184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_14
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c058ca6a6166746a8d645bf248f6e9
+      internalID: 2885395603716650489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_15
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 479.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c6f2f82534bcd45bae044c9ad6d3b4
+      internalID: -1809652802393461394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3cc31cd26e85d8429bc32a5a9723ded
+      internalID: 9145335741591883913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_17
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a7b8261c5518004eab13b02cbeab330
+      internalID: 8333013196326227174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_18
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6013f1fdfba10c4193746cc26c01896
+      internalID: -7793758827691058045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_19
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb05a6877e6ebdc409a778e183748164
+      internalID: -6553996441696368842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_20
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8777b9a6f400164392ec3f418af9e7c
+      internalID: -3730089119782347386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_21
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a95999cb74552747aa5d7516d970b9c
+      internalID: -8736212209935577225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_22
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657ee40ea944a1e429648c6b35fac10a
+      internalID: 4074376605542489796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_23
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 411.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03491d0396927f948b6b283943d853fc
+      internalID: -4461450686473372235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1e57042763eda499156fc217d5899e
+      internalID: 4034800722233752462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_25
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d2c5a6b692642448e12ce647169322
+      internalID: 4141953354031604209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_26
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149f3e0d159c98f4ea3891e2f3ebc4c8
+      internalID: 8959446093923862142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_27
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01bf34c97c562b45a6cd2f20e1930b1
+      internalID: 865545157967685297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_28
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6642cd0afc255e4e84281dba66634ad
+      internalID: 6396259832362059798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_29
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d279f476f8ab3f642b6264f3982aac24
+      internalID: 2129217056212719278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_30
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d03050326847dd448c5e32eb7b66944
+      internalID: 1128714196832605064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_31
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 343.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c24dd41d2b32084f87c4eea893d5a9f
+      internalID: -627120136019943634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e52671fd63678ff4fa65fcbcd1c646ec
+      internalID: -157665095669735769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_33
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d80040720a2844b9c16677bdfd06a7
+      internalID: 4371763480955107636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_34
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a23cfdee5ecec849b3c2a74fe88499e
+      internalID: -8388816692111759829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_35
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 432d32ecb974b2d439f6a64f4f5f420c
+      internalID: -1416783920073335276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_36
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5782e866c2b91274f9e790791aaea29a
+      internalID: 2969936845362088815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_37
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b5e41701f3ac14eb143ac8a1e7e6a4
+      internalID: -3628473549271457609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_38
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bc21aeb8777e5e4580068512429f49d
+      internalID: 2191522746080172728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_39
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 275.55554
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e22c638e5ddd5240a614fe589f4f919
+      internalID: -2355999085903891465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d68b84a064d9e4389a5993b305f66b
+      internalID: 1483819949891671325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_41
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6d0827dafefe1c469afd43d00dd2574
+      internalID: 4859674974407598298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_42
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41270244dba1ed741ab87af71f481902
+      internalID: 119887543711100023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_43
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b5623a6311e7c24f978f54e482a9a74
+      internalID: -6815858474422864750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_44
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc0a66de666a67468f1ca28469820ae
+      internalID: 1922782756182260704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_45
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202ebcb6be8889c45949fd0439c96cfc
+      internalID: 812463289136968691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_46
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72055ec24f96c2d4a82ae64c15f4bce8
+      internalID: -3343892288036837796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_47
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 207.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98448c6661898ee48becebf6f6d351eb
+      internalID: -4818087143613000193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5601cc167439374ebd5ec3354fd2812
+      internalID: 5289146051740608680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_49
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a1db3684ea2094ba8bdda4f28bbaed
+      internalID: 2455101015435594157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_50
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c9e5b9bddc20e4fb603c773c4bfa64
+      internalID: -7396726605276069092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_51
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8df70bec796451459514f1f50067b58
+      internalID: -2770457197198350316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_52
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce9ffc609566e942b9dfa2f6eb69ef0
+      internalID: 712119836295756988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_53
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e2499763f85cc4f82d7564c9bf2ff6
+      internalID: 3309213329227373997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_54
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b1e5c32c9d9ed4cbc3e0875ffa3a94
+      internalID: -3435839369413277080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_55
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 139.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836de355d5b4e9a44a9c1e8bf5053fcf
+      internalID: -2511210066180437696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 994faf1548363bb41bdfaf9f9fd8a443
+      internalID: 6028664469919770592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_57
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820ba90358146ea44a797e0325f1c934
+      internalID: -3784926351347863216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_58
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c70edd41e40384e9d71a4c1a24b56d
+      internalID: 2383543981376085324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_59
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a68a711868bf7b47baea854595dc185
+      internalID: -2965179354315565191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_60
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975cf5e74fa6188478606a6ba0993295
+      internalID: 8831053851992069122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_61
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b31ae62458f6046affb06697af28d6
+      internalID: -4126404980429801480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_62
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a2d2260d9f86348bf3534dbfe536ff
+      internalID: -5693664805415542178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_63
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 71.55556
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7e2c5c525d4144fae6a912655725c8
+      internalID: -2099727165484355201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: null large concept_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.5555573
+        width: 68.5
+        height: 68.44444
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f799c8ef54d820c45906d2baed7cba2b
+      internalID: -7779309000721731444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -25,14 +25,14 @@ public class ModuleSystem : MonoBehaviour
         allModules = new Dictionary<Type, Module>();
         currentModules = new List<Module>();
 
-        Add(typeof(JumpModule), new JumpModule());
+        Add(typeof(JumpModule), new JumpModule(playerAnimationController.instance.rocket));
         Add(typeof(CoreModule), new CoreModule());
         Add(typeof(WalkModule), new WalkModule());
-        Add(typeof(GunModule), new GunModule());
-        Add(typeof(ChargeGunModule), new ChargeGunModule());
+        Add(typeof(GunModule), new GunModule(playerAnimationController.instance.gun));
+        Add(typeof(ChargeGunModule), new ChargeGunModule(playerAnimationController.instance.bigGun));
         Add(typeof(MonochromeModule), new MonochromeModule(volume, monoChromeProfile, normalProfile));
         Add(typeof(FullSightModule), new FullSightModule(volume, normalProfile));
-        Add(typeof(AudioModule), new AudioModule());
+        Add(typeof(AudioModule), new AudioModule(playerAnimationController.instance.sound));
         Add(typeof(EnemyHealthModule), new EnemyHealthModule());
         Add(typeof(PlayerHealthModule), new PlayerHealthModule());
         instance = this;

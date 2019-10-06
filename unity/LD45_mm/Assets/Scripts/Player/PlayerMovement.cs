@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     bool isRecoiling;
     Vector2 recoilDir;
 
+    public Animator anim;
+    public ParticleSystem dust;
+
+
     private void Awake()
     {
         instance = this;
@@ -43,13 +48,13 @@ public class PlayerMovement : MonoBehaviour
         mSystem = GetComponent<ModuleSystem>();
         mSystem.AddCollectedModule<CoreModule>();
         mSystem.AddCollectedModule<WalkModule>();
-        mSystem.AddCollectedModule<JumpModule>(true);
-        mSystem.AddCollectedModule<GunModule>(true);
-        //mSystem.AddCollectedModule<MonochromeModule>(false);
-        mSystem.AddCollectedModule<FullSightModule>(true);
-        mSystem.AddCollectedModule<ChargeGunModule>(true);
-        //mSystem.AddCollectedModule<PlayerHealthModule>(false);
-        mSystem.AddCollectedModule<EnemyHealthModule>(false);
+
+        mSystem.AddCollectedModule<JumpModule>();
+        mSystem.AddCollectedModule<GunModule>();
+        mSystem.AddCollectedModule<MonochromeModule>();
+        mSystem.AddCollectedModule<FullSightModule>();
+        mSystem.AddCollectedModule<ChargeGunModule>();
+        mSystem.AddCollectedModule<EnemyHealthModule>();
     }
 
     // Update is called once per frame
@@ -57,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(bottomOffset.position, collisionRadius, groundLayer);
-
+        anim.SetBool("isGrounded", isGrounded);
         if (wasGrounded && !isGrounded)
         {
             coyoteTimeTrack = Time.time + coyoteTime;
@@ -114,10 +119,12 @@ public class PlayerMovement : MonoBehaviour
                 rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMult - 1) * Time.deltaTime;
             }
         }
-
+        anim.SetFloat("velocityY", rBody.velocity.y);
+        SetDustEmmision();
     }
     public void Walk(Vector2 i)
     {
+        anim.SetBool("Walk", (i.x != 0));
         i *= speed;
         rBody.velocity = new Vector2(i.x, rBody.velocity.y);
     }
@@ -131,9 +138,10 @@ public class PlayerMovement : MonoBehaviour
         isFacingRight = right;
         transform.localEulerAngles = new Vector3(0, right ? 0 : 180, 0);
     }
-    void Run()
+    void SetDustEmmision()
     {
-
+        EmissionModule em = dust.emission;
+        em.enabled = isGrounded && Mathf.Abs(input.x) > 0;
     }
 
     void Jump()
@@ -141,6 +149,8 @@ public class PlayerMovement : MonoBehaviour
         jumpHoldTimeTrack = jumpHoldTime;
         rBody.velocity = new Vector2(rBody.velocity.x, 0);
         rBody.velocity += Vector2.up * jumpSpeed;
+        anim.SetTrigger("Jump");
+        anim.SetBool("isGrounded", false);
     }
 
     private void OnDrawGizmosSelected()

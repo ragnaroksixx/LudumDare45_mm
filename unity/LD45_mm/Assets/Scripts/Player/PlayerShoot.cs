@@ -28,11 +28,11 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(shootKey) && ModuleSystem.instance.HasModule<ChargeGunModule>() && ModuleSystem.instance.HasModule<GunModule>())
+        if (Input.GetKeyDown(shootKey) && ModuleSystem.instance.HasModule<ChargeGunModule>())
         {
             chargeTrack = 0;
         }
-        else if (Input.GetKey(shootKey) && ModuleSystem.instance.HasModule<ChargeGunModule>() && ModuleSystem.instance.HasModule<GunModule>())
+        else if (Input.GetKey(shootKey) && ModuleSystem.instance.HasModule<ChargeGunModule>())
         {
             chargeTrack += Time.deltaTime;
             if (chargeTrack >= minChargeTime && !isChargeShooting)
@@ -42,9 +42,9 @@ public class PlayerShoot : MonoBehaviour
 
             }
         }
-        else if (Input.GetKeyUp(shootKey) && ModuleSystem.instance.HasModule<GunModule>())
+        else if (Input.GetKeyUp(shootKey) && (ModuleSystem.instance.HasModule<GunModule>() || ModuleSystem.instance.HasModule<ChargeGunModule>()))
         {
-            if (chargeTrack >= chargeTime)
+            if (chargeTrack >= chargeTime && ModuleSystem.instance.HasModule<GunModule>())
                 Shoot(1.5f);
             else
                 Shoot();

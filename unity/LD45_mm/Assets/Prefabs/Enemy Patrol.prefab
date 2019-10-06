@@ -55,8 +55,10 @@ MonoBehaviour:
   bottomOffset: {fileID: 3138605479019681132}
   isFacingRight: 1
   image: {fileID: 3138605479326671549}
-  targetA: {fileID: 1721728023644167361}
-  targetB: {fileID: 1721728021966154616}
+  targets:
+  - {fileID: 1721728023644167361}
+  - {fileID: 1721728021966154616}
+  ignoreY: 0
 --- !u!1 &1721728021966154619
 GameObject:
   m_ObjectHideFlags: 0

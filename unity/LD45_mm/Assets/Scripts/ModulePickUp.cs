@@ -24,6 +24,7 @@ public class ModulePickUp : MonoBehaviour
         if (canGrabTime <= 0 && collision.gameObject.tag == "Player")
         {
             ModuleSystem.instance.AddCollectedModule(moduleType);
+            ModuleAquiredUI.instance.Aquire(module);
             Destroy(this.gameObject);
         }
     }
