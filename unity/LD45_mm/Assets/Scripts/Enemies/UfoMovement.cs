@@ -32,6 +32,7 @@ public class UfoMovement : MonoBehaviour
     private bool isDying = false;
     Mode mode;
     Animator anim;
+    private bool isCharging;
     
     public ParticleSystem chargeParticles;
 
@@ -75,25 +76,29 @@ public class UfoMovement : MonoBehaviour
                 break;
             case Mode.Attack:
                 this.rb.velocity = new Vector2(0, 0);
+                this.audioSources[3].Play(0);
+                chargeParticles.Play();
                 if(this.executionTime < this.cycleTime * .3)
                 {
                     SuperShot();  
                     this.executionTime = this.cycleTime;
+                    this.fireTimer = 0;
                     this.mode = Mode.Evade;
                 } 
                 break;
             case Mode.Evade:
                 if(this.executionTime > (this.cycleTime * .8)) 
                 {
-                    this.rb.velocity = new Vector2(this.speed, -this.speed * 2);
+                    this.rb.velocity = new Vector2(this.speed, -this.speed *1.5f);
                 }
                 else if (this.executionTime > (this.cycleTime * .6))
                 {
-                    this.rb.velocity = new Vector2(this.speed, this.speed * 2);
+                    this.rb.velocity = new Vector2(this.speed, this.speed * 1.5f);
                 }
                 else if (this.executionTime > (this.cycleTime * .4))
                 {
                     this.rb.velocity = new Vector2(-this.speed, -this.speed  * 2);
+                    Fire();
                 }
                 else if (this.executionTime > (this.cycleTime * .2))
                 {
@@ -114,7 +119,7 @@ public class UfoMovement : MonoBehaviour
                 }
 
                 if (this.executionTime > this.cycleTime * .5) {
-                    this.rb.velocity = new Vector2(0, (float)(this.speed * -.6));
+                    this.rb.velocity = new Vector2(0, (float)(this.speed * -.3));
                     ParticleSystem p = GameObject.Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
                     this.audioSources[1].Play(0);
                 } 
@@ -155,6 +160,8 @@ public class UfoMovement : MonoBehaviour
     {
         this.audioSources[1].Play(0);
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
+        EnemyBullet bulletGo = bullet.GetComponent<EnemyBullet>();
+        bulletGo.Damage = 2;
         bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
         this.health -= (this.health * .33f);
