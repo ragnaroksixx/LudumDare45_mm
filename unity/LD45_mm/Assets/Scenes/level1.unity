@@ -2015,7 +2015,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NULLY
+  m_text: NULL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2084,7 +2084,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1196894123}
-    characterCount: 5
+    characterCount: 4
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -7792,12 +7792,12 @@ PrefabInstance:
     - target: {fileID: 5440158664477283928, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.4
+      value: 81.9
       objectReference: {fileID: 0}
     - target: {fileID: 5440158664477283928, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3999999
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 5440158664477283943, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
@@ -7827,12 +7827,12 @@ PrefabInstance:
     - target: {fileID: 5440158664451032949, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 5440158664451032949, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.4
+      value: 81.9
       objectReference: {fileID: 0}
     - target: {fileID: 5440158663721504618, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
@@ -8881,6 +8881,11 @@ PrefabInstance:
     - target: {fileID: 6583261310324718937, guid: 6f2ecb36b9a2f8548a192c99002f1771,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583261310324718936, guid: 6f2ecb36b9a2f8548a192c99002f1771,
+        type: 3}
+      propertyPath: stuffToDisable.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

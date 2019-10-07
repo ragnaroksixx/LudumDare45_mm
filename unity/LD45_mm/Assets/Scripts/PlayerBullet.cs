@@ -16,10 +16,8 @@ public class PlayerBullet : MonoBehaviour
         Destroy(this.gameObject);
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyHealth e = collision.gameObject.GetComponentInParent<EnemyHealth>();
-            if (e)
-                e.TakeDamage(damage);
-        }
+            collision.gameObject.GetComponentInParent<EnemyHealth>().TakeDamage(damage);
+        } 
     }
 
     private void OnDestroy()

@@ -58,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
             mSystem.AddCollectedModule<CoreModule>();
         }
         
-        /*
         mSystem.AddCollectedModule<WalkModule>();
         mSystem.AddCollectedModule<JumpModule>();
         mSystem.AddCollectedModule<GunModule>();
@@ -66,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
         mSystem.AddCollectedModule<FullSightModule>();
         mSystem.AddCollectedModule<ChargeGunModule>();
         mSystem.AddCollectedModule<EnemyHealthModule>();
-        */
         
         
     }
