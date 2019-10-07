@@ -45,7 +45,7 @@ public class PalletteController : MonoBehaviour
     {
         this.rb = GetComponent<Rigidbody2D>();
         this.audioSources = GetComponents<AudioSource>();
-        this.mode = Mode.Traverse;
+        this.mode = Mode.Dying;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
         this.attackCount = 0;
