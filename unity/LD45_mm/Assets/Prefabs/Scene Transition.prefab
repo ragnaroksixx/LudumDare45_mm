@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec1ac39a1174d148a67b994f4248565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stuffToDisable: []
+  stuffToDisable:
+  - {fileID: 6583261310324718937}
   enableOnStart: 1
   nextScene: FinalUfoLevel
 --- !u!61 &6583261310324718939

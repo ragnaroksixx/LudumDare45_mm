@@ -48,9 +48,9 @@ public class ModuleSystem : MonoBehaviour
     {
         allModules.Add(t, m);
     }
-    public void Spawn(Type t, Pose p)
+    public ModulePickUp Spawn(Type t, Pose p)
     {
-        ModulePickUp.Spawn(t, allModules[t], p);
+       return ModulePickUp.Spawn(t, allModules[t], p);
     }
     public void AddCollectedModule<T>(bool activate = true) where T : Module
     {

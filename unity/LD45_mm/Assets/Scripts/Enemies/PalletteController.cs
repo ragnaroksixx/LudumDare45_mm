@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PalletteController : MonoBehaviour
 {
-    enum Mode {
+    enum Mode
+    {
         Attack,
         SuperShot,
         Traverse,
@@ -13,14 +14,14 @@ public class PalletteController : MonoBehaviour
     };
     Rigidbody2D rb;
     public Animator anim;
-    
+
     public GameObject explosionPrefab;
     public bool isGrounded = false;
     public LayerMask groundLayer;
     public float collisionRadius = 1;
     public float fallMult = 2.5f;
     public Transform bottomOffset;
-    
+
     public bool isFacingRight = true;
     public float speed = 5.0f;
     int attackCount;
@@ -38,11 +39,11 @@ public class PalletteController : MonoBehaviour
     private bool canBeHit;
     Mode mode;
     AudioSource[] audioSources;
-
+    public Transform leftBounds, rightBounds;
     // Start is called before the first frame update
     void Start()
     {
-        this.rb=GetComponent<Rigidbody2D>();
+        this.rb = GetComponent<Rigidbody2D>();
         this.audioSources = GetComponents<AudioSource>();
         this.mode = Mode.Traverse;
         this.executionTime = this.cycleTime;
@@ -51,23 +52,27 @@ public class PalletteController : MonoBehaviour
         this.canBeHit = true;
         this.isFacingRight = false;
         FaceDirection(this.isFacingRight);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         isGrounded = Physics2D.OverlapCircle(bottomOffset.position, collisionRadius, groundLayer);
         anim.SetBool("isGrounded", isGrounded);
-        
-        switch(mode){
+
+        switch (mode)
+        {
             case Mode.Traverse:
                 if (this.executionTime > 0)
                 {
-                    this.rb.velocity = isFacingRight ? (new Vector2(this.speed * 2, this.rb.velocity.y)) : (new Vector2(-this.speed *2, this.rb.velocity.y));
-                } 
-                else 
+                    if (isFacingRight && transform.position.x >= rightBounds.position.x) { rb.velocity = Vector2.zero; break; }
+                    if (!isFacingRight && transform.position.x <= leftBounds.position.x) { rb.velocity = Vector2.zero; break; }
+
+                    this.rb.velocity = isFacingRight ? (new Vector2(this.speed * 2, this.rb.velocity.y)) : (new Vector2(-this.speed * 2, this.rb.velocity.y));
+                }
+                else
                 {
                     anim.SetBool("isShooting", true);
                     this.isFacingRight = !this.isFacingRight;
@@ -80,8 +85,8 @@ public class PalletteController : MonoBehaviour
                 if (this.executionTime > 2)
                 {
                     anim.SetBool("isHurt", true);
-                } 
-                else 
+                }
+                else
                 {
                     anim.SetBool("isHurt", false);
                     this.mode = Mode.Traverse;
@@ -90,25 +95,26 @@ public class PalletteController : MonoBehaviour
                 break;
             case Mode.Attack:
                 this.rb.velocity = new Vector2(0, this.rb.velocity.y);
-                if(this.executionTime > this.cycleTime * 4)
+                if (this.executionTime > this.cycleTime * 4)
                 {
                     this.rb.velocity = new Vector2(0, this.speed);
-                    Fire(); 
+                    Fire();
                 }
-                else if(this.executionTime > 0)
+                else if (this.executionTime > 0)
                 {
-                   Fire(); 
+                    Fire();
                 }
-                else {
+                else
+                {
                     this.attackCount += 1;
                     this.executionTime = this.cycleTime;
                     this.mode = Mode.Traverse;
                     anim.SetBool("isShooting", false);
-                } 
+                }
                 break;
             case Mode.SuperShot:
                 this.rb.velocity = new Vector2(0, 0);
-                if(this.executionTime < 3) 
+                if (this.executionTime < 3)
                 {
                     SuperShot();
                     this.attackCount = 0;
@@ -121,10 +127,10 @@ public class PalletteController : MonoBehaviour
                 this.rb.velocity = new Vector2(0, 0);
                 ParticleSystem p = GameObject.Instantiate(explosionPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
                 anim.SetBool("isDead", true);
-                if(this.executionTime < 3) 
+                if (this.executionTime < 3)
                 {
                     Pose pose = new Pose(transform.position, Quaternion.identity);
-                    ModuleSystem.instance.Spawn(typeof(FullSightModule), pose);
+                    ModuleSystem.instance.Spawn(typeof(FullSightModule), pose).openExit = true;
                     this.audioSources[2].Play();
                     Destroy(this.gameObject);
                 }
@@ -150,11 +156,11 @@ public class PalletteController : MonoBehaviour
 
     void Fire()
     {
-        if (this.fireTimer < 0.0f) 
+        if (this.fireTimer < 0.0f)
         {
             Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
             bullet.AddForce((isFacingRight ? new Vector2(1, 0) : new Vector2(-1, 0)) * bulletSpeed);
-            Destroy(bullet.gameObject, bulletLife); 
+            Destroy(bullet.gameObject, bulletLife);
             this.fireTimer = this.fireDelay;
             audioSources[1].Play(1);
         }
@@ -162,18 +168,19 @@ public class PalletteController : MonoBehaviour
     void SuperShot()
     {
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
-        bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
-        Destroy(bullet.gameObject, bulletLife); 
+        bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position).normalized * bulletSpeed * 4);
+        Destroy(bullet.gameObject, bulletLife);
         audioSources[1].Play(0);
     }
 
-    public bool TakeDamage(){
-        if(canBeHit && (this.mode == Mode.Traverse || this.mode == Mode.Attack))
+    public bool TakeDamage()
+    {
+        if (canBeHit && (this.mode == Mode.Traverse || this.mode == Mode.Attack))
         {
             this.mode = Mode.Hurt;
             this.canBeHit = false;
             return true;
-        } 
+        }
         else
         {
             return false;
