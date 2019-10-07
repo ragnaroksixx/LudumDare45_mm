@@ -12,14 +12,13 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.layer == 31 || collision.gameObject.layer == 28 || collision.gameObject.layer == 30)
+        {
+            Destroy(this.gameObject);
+        }else if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponentInParent<PlayerMovement>().HitPlayer(transform);
             collision.gameObject.GetComponentInParent<HealthScript>().TakeDamage(this.Damage);
-            Destroy(this.gameObject);
-        }
-        else if (collision.gameObject.layer == 31 || collision.gameObject.layer == 28 || collision.gameObject.layer == 30)
-        {
             Destroy(this.gameObject);
         }
     }

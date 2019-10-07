@@ -94,7 +94,7 @@ class GunModule : AnimationChangeModuleGun
     }
     public override string GetTip()
     {
-        return base.GetTip() + " Press [SHIFT] or Mouse Click to Shoot";
+        return base.GetTip() + " Press Mouse Click to Shoot";
     }
 }
 class ChargeGunModule : AnimationChangeModuleGun

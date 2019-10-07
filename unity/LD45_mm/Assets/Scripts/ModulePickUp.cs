@@ -18,6 +18,7 @@ public class ModulePickUp : MonoBehaviour
     Sequence gSeqScale, gSeqOpac;
 
     public bool openExit;
+    public bool flyBird;
 
     private void Update()
     {
@@ -55,6 +56,10 @@ public class ModulePickUp : MonoBehaviour
                     if(openExit)
                     {
                         SceneTransitioner.instance.EnableSceneTransition();
+                    }
+                    if(flyBird)
+                    {
+                        BirdFlier.instance.Fly();
                     }
                 }
             }
