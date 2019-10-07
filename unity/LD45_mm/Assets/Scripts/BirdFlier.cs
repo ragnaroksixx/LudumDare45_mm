@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class BirdFlier : MonoBehaviour
 {
-    public Transform start, end;
+    public CanvasGroup canvas;
     public static BirdFlier instance;
 
     private void Awake()
@@ -14,8 +14,6 @@ public class BirdFlier : MonoBehaviour
 
     public void Fly()
     {
-        transform.position = start.position;
-
-        transform.DOMove(end.position, 10);
+        canvas.DOFade(1, 1).SetDelay(8);
     }
 }

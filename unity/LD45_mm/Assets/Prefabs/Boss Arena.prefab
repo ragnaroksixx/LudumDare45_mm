@@ -92,7 +92,7 @@ SpriteRenderer:
   m_Size: {x: 1.48, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6889440703735458572
@@ -396,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7516996902455541890
 Transform:
   m_ObjectHideFlags: 0
@@ -503,7 +503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7516996903169200500
 Transform:
   m_ObjectHideFlags: 0
@@ -903,6 +903,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Scene Transition
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583261310324718936, guid: 6f2ecb36b9a2f8548a192c99002f1771,
+        type: 3}
+      propertyPath: stuffToDisable.Array.data[0]
+      value: 
+      objectReference: {fileID: 7516996902151869538}
+    - target: {fileID: 6583261310324718936, guid: 6f2ecb36b9a2f8548a192c99002f1771,
+        type: 3}
+      propertyPath: enableOnStart
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f2ecb36b9a2f8548a192c99002f1771, type: 3}

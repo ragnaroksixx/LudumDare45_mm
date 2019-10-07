@@ -130,7 +130,7 @@ public class PalletteController : MonoBehaviour
                 if (this.executionTime < 3)
                 {
                     Pose pose = new Pose(transform.position, Quaternion.identity);
-                    ModuleSystem.instance.Spawn(typeof(FullSightModule), pose);
+                    ModuleSystem.instance.Spawn(typeof(FullSightModule), pose).flyBird = true;
                     this.audioSources[2].Play();
                     Destroy(this.gameObject);
                 }
