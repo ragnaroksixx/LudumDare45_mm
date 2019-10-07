@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalUfoLevel.unity
     guid: 88db596f249b8cd4b984b3042aa1a29c
+  - enabled: 1
+    path: Assets/Scenes/FinalPalletteLevel.unity
+    guid: 7b0f53a3c08baaf468a37bff7a163633
   m_configObjects: {}
