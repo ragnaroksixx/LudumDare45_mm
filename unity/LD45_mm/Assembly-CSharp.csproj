@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Enemies\PalletteController.cs" />
      <Compile Include="Assets\Scripts\Enemies\UfoMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyHitbox.cs" />
+     <Compile Include="Assets\Scripts\FlockController.cs" />
      <Compile Include="Assets\Scripts\Health\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Health\EnemyHealthUI.cs" />
      <Compile Include="Assets\Scripts\Health\HealthScript.cs" />
