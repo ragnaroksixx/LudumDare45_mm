@@ -45,7 +45,7 @@ public class PalletteController : MonoBehaviour
     {
         this.rb = GetComponent<Rigidbody2D>();
         this.audioSources = GetComponents<AudioSource>();
-        this.mode = Mode.Dying;
+        this.mode = Mode.Traverse;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
         this.attackCount = 0;
@@ -109,6 +109,7 @@ public class PalletteController : MonoBehaviour
                     this.attackCount += 1;
                     this.executionTime = this.cycleTime;
                     this.mode = Mode.Traverse;
+                    FaceDirection(isFacingRight);
                     anim.SetBool("isShooting", false);
                 }
                 break;
@@ -130,7 +131,7 @@ public class PalletteController : MonoBehaviour
                 if (this.executionTime < 3)
                 {
                     Pose pose = new Pose(transform.position, Quaternion.identity);
-                    ModuleSystem.instance.Spawn(typeof(FullSightModule), pose).openExit = true;
+                    ModuleSystem.instance.Spawn(typeof(FullSightModule), pose);
                     this.audioSources[2].Play();
                     Destroy(this.gameObject);
                 }
@@ -158,8 +159,11 @@ public class PalletteController : MonoBehaviour
     {
         if (this.fireTimer < 0.0f)
         {
+            bool right = PlayerMovement.instance.transform.position.x > transform.position.x;
+            transform.localEulerAngles = new Vector3(0, right ? 0 : 180, 0);
+
             Rigidbody2D bullet = GameObject.Instantiate(bulletPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
-            bullet.AddForce((isFacingRight ? new Vector2(1, 0) : new Vector2(-1, 0)) * bulletSpeed);
+            bullet.AddForce((right ? new Vector2(1, 0) : new Vector2(-1, 0)) * bulletSpeed);
             Destroy(bullet.gameObject, bulletLife);
             this.fireTimer = this.fireDelay;
             audioSources[1].Play(1);
