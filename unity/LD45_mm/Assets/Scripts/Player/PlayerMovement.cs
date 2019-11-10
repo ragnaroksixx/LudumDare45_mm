@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float lowJumpMult = 2.0f;
 
     public bool isGrounded = false;
+    public bool wasGrounded;
     public LayerMask groundLayer;
     public float collisionRadius = 1;
     public Transform bottomOffset;
@@ -36,8 +37,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator anim;
     public ParticleSystem dust;
+    public float timeScale = 1;
+    public float TimeScale { get => Time.deltaTime * timeScale; }
 
-
+    public bool canMove = true;
     private void Awake()
     {
         instance = this;
@@ -50,30 +53,32 @@ public class PlayerMovement : MonoBehaviour
         SavedData.Load();
         foreach (Type t in SavedData.allTypes)
         {
-            mSystem.AddCollectedModule(t);
+            //mSystem.AddCollectedModule(t);
         }
 
         if (SavedData.allTypes.Count == 0) //Starting new game
         {
-            mSystem.AddCollectedModule<CoreModule>();
+            //mSystem.AddCollectedModule<CoreModule>();
         }
-        
-        /*
+
+        mSystem.AddCollectedModule<CoreModule>();
         mSystem.AddCollectedModule<WalkModule>();
-        mSystem.AddCollectedModule<JumpModule>();
+        mSystem.AddCollectedModule<DoubleJumpModule>();
         mSystem.AddCollectedModule<GunModule>();
         mSystem.AddCollectedModule<MonochromeModule>();
         mSystem.AddCollectedModule<FullSightModule>();
         mSystem.AddCollectedModule<ChargeGunModule>();
         mSystem.AddCollectedModule<EnemyHealthModule>();
-        */
-        
+        mSystem.AddCollectedModule<DashModule>();
+        mSystem.AddCollectedModule<ShieldModule>();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool wasGrounded = isGrounded;
+        wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(bottomOffset.position, collisionRadius, groundLayer);
         anim.SetBool("isGrounded", isGrounded);
         if (wasGrounded && !isGrounded)
@@ -82,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         input = Vector2.zero;
+
         if (isRecoiling)
         {
             input = recoilDir;
@@ -90,16 +96,17 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
-            if (Input.GetKey(KeyCode.A))
+            if (canMove)
             {
-                input.x -= 1;
+                if (Input.GetKey(KeyCode.A))
+                {
+                    input.x -= 1;
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    input.x += 1;
+                }
             }
-            if (Input.GetKey(KeyCode.D))
-            {
-                input.x += 1;
-            }
-
             if (input.x > 0 && !isFacingRight)
                 FaceDirection(true);
             else if (input.x < 0 && isFacingRight)
@@ -111,25 +118,19 @@ public class PlayerMovement : MonoBehaviour
                 Walk(input / 2);
         }
 
-        if ((isGrounded || Time.time < coyoteTimeTrack) && Input.GetKeyDown(KeyCode.Space) && mSystem.HasModule<JumpModule>())
-        {
-            Jump();
-        }
-
-
         if (!isGrounded)
         {
             holdingJump = jumpHoldTimeTrack > 0 && Input.GetKey(KeyCode.Space);
-            jumpHoldTimeTrack -= Time.deltaTime;
+            jumpHoldTimeTrack -= TimeScale;
 
             if (rBody.velocity.y < 0)
             {
-                rBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
+                rBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * TimeScale;
             }
             else if (rBody.velocity.y > 0 && !holdingJump)
             {
-                jumpHoldTimeTrack -= Time.deltaTime;
-                rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMult - 1) * Time.deltaTime;
+                jumpHoldTimeTrack -= TimeScale;
+                rBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMult - 1) * TimeScale;
             }
         }
         anim.SetFloat("velocityY", rBody.velocity.y);
@@ -157,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
         em.enabled = isGrounded && Mathf.Abs(input.x) > 0;
     }
 
-    void Jump()
+    public void Jump()
     {
         jumpHoldTimeTrack = jumpHoldTime;
         rBody.velocity = new Vector2(rBody.velocity.x, 0);
@@ -182,5 +183,14 @@ public class PlayerMovement : MonoBehaviour
 
         recoilDir = result;
         recoilTrack = Time.time + recoilTime;
+    }
+
+    public void Dash(float dashTime, float speed)
+    {
+        Debug.LogWarning("XXX");
+        if (isRecoiling) return;
+        isRecoiling = true;
+        recoilDir = speed * (isFacingRight ? Vector3.right : Vector3.left);
+        recoilTrack = Time.time + dashTime;
     }
 }
