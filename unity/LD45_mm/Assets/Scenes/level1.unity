@@ -7481,6 +7481,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 5440158664477283943, guid: cb57fc77fd688264191393d8ffc979f0,
+        type: 3}
+      propertyPath: m_ForceIntoRT
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2045887835560145044, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7810,11 +7815,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440158664477283943, guid: cb57fc77fd688264191393d8ffc979f0,
-        type: 3}
-      propertyPath: m_ForceIntoRT
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2381225420689856567, guid: cb57fc77fd688264191393d8ffc979f0,
         type: 3}

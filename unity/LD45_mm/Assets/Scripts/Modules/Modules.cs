@@ -56,23 +56,68 @@ abstract class AnimationChangeModuleGun : AnimationChangeModule
     }
 
 }
-abstract class TypeModule : Module
-{
-    public abstract string Caterorgy { get; }
-}
 
-class JumpModule : AnimationChangeModule
+class DoubleJumpModule : JumpModule
 {
-    public override string Name => "jump";
+    public override string Name => "jump.dbl";
     public override float Priority => 3;
-
-    public JumpModule(SpriteRenderer s) : base(s)
+    bool useDoubleJump = false;
+    public DoubleJumpModule(SpriteRenderer s, PlayerMovement pm) : base(s, pm)
     {
 
     }
     public override string GetTip()
     {
         return base.GetTip() + " Press [SPACE] to Jump";
+    }
+    public override void Update()
+    {
+        if (!move.wasGrounded && move.isGrounded)
+            useDoubleJump = false;
+
+        base.Update();
+    }
+    public override bool CanJump()
+    {
+        return (move.isGrounded || Time.time < move.coyoteTimeTrack || !useDoubleJump)
+            && Input.GetKeyDown(KeyCode.Space);
+    }
+    public override void Jump()
+    {
+        if (!move.isGrounded)
+            useDoubleJump = true;
+        base.Jump();
+    }
+}
+class JumpModule : AnimationChangeModule
+{
+    public override string Name => "jump";
+    public override float Priority => 3;
+    protected PlayerMovement move;
+    public JumpModule(SpriteRenderer s, PlayerMovement pm) : base(s)
+    {
+        move = pm;
+        hasUpdate = true;
+    }
+    public override void Update()
+    {
+        base.Update();
+        if (CanJump())
+        {
+            Jump();
+        }
+    }
+    public override string GetTip()
+    {
+        return base.GetTip() + " Press [SPACE] to Jump";
+    }
+    public virtual bool CanJump()
+    {
+        return (move.isGrounded || Time.time < move.coyoteTimeTrack) && Input.GetKeyDown(KeyCode.Space);
+    }
+    public virtual void Jump()
+    {
+        move.Jump();
     }
 }
 class AudioModule : AnimationChangeModule
@@ -210,7 +255,7 @@ class CoreModule : Module
     }
 
 }
-abstract class VisionModule : TypeModule
+abstract class VisionModule : Module
 {
     public override string Caterorgy => "SIGHT";
     public PostProcessProfile normal;
@@ -310,5 +355,79 @@ class FullSightModule : VisionModule
     {
         return base.GetTip() + " See the world in full color";
     }
+}
+class DashModule : Module
+{
+    public override string Name => "dash.exe";
+    public override float Priority => 6;
+    protected PlayerMovement move;
+    float time = 0.25f;
+    float speed = 2.5f;
+    public DashModule(PlayerMovement m) : base()
+    {
+        move = m;
+        hasUpdate = true;
+    }
+
+    public override void ActivateModule()
+    {
+    }
+
+    public override void DeactivateModule()
+    {
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            Dash();
+    }
+    public void Dash()
+    {
+        move.Dash(time, speed);
+    }
+
+
+}
+
+class ShieldModule : Module
+{
+    public override string Name => "shield.blk";
+    public override float Priority => 6;
+    float cooldown = 5f;
+    public ShieldModule() : base()
+    {
+        hasUpdate = true;
+    }
+
+    public override void ActivateModule()
+    {
+    }
+
+    public override void DeactivateModule()
+    {
+        Shield(false);
+    }
+    public override void Default()
+    {
+        base.Default();
+        Shield(false);
+    }
+    public override void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            Shield(true);
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
+            Shield(false);
+    }
+    public void Shield(bool val)
+    {
+        playerAnimationController.instance.shield.gameObject.SetActive(val);
+        PlayerMovement.instance.canMove = !val;
+    }
+
+
 }
 

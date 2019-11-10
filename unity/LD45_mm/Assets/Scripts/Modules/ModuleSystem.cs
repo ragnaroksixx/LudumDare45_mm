@@ -25,7 +25,12 @@ public class ModuleSystem : MonoBehaviour
         allModules = new Dictionary<Type, Module>();
         currentModules = new List<Module>();
 
-        Add(typeof(JumpModule), new JumpModule(playerAnimationController.instance.rocket));
+        instance = this;
+    }
+    private void Start()
+    {
+        Add(typeof(JumpModule), new JumpModule(playerAnimationController.instance.rocket, PlayerMovement.instance));
+        Add(typeof(DoubleJumpModule), new DoubleJumpModule(playerAnimationController.instance.rocket, PlayerMovement.instance));
         Add(typeof(CoreModule), new CoreModule());
         Add(typeof(WalkModule), new WalkModule());
         Add(typeof(GunModule), new GunModule(playerAnimationController.instance.gun));
@@ -35,10 +40,9 @@ public class ModuleSystem : MonoBehaviour
         Add(typeof(AudioModule), new AudioModule(playerAnimationController.instance.sound));
         Add(typeof(EnemyHealthModule), new EnemyHealthModule());
         Add(typeof(PlayerHealthModule), new PlayerHealthModule());
-        instance = this;
-    }
-    private void Start()
-    {
+        Add(typeof(DashModule), new DashModule(PlayerMovement.instance));
+        Add(typeof(ShieldModule), new ShieldModule());
+
         foreach (Module module in allModules.Values)
         {
             module.Default();
@@ -50,7 +54,7 @@ public class ModuleSystem : MonoBehaviour
     }
     public ModulePickUp Spawn(Type t, Pose p)
     {
-       return ModulePickUp.Spawn(t, allModules[t], p);
+        return ModulePickUp.Spawn(t, allModules[t], p);
     }
     public void AddCollectedModule<T>(bool activate = true) where T : Module
     {
@@ -86,22 +90,16 @@ public class ModuleSystem : MonoBehaviour
         if (currentModules.Count < maxComponents) return true;
 
         Module m = allModules[t];
-        if (!currentModules.Contains(m))
+        if (!currentModules.Contains(m) && m.Caterorgy != "none")
         {
-            if (m is TypeModule)
+            foreach (Module item in currentModules)
             {
-                foreach (Module item in currentModules)
-                {
-                    if (item is TypeModule)
-                    {
-                        TypeModule a = m as TypeModule;
-                        TypeModule b = item as TypeModule;
+                Module a = m;
+                Module b = item;
 
-                        if (a.Caterorgy == b.Caterorgy)
-                        {
-                            return true;
-                        }
-                    }
+                if (a.Caterorgy == b.Caterorgy)
+                {
+                    return true;
                 }
             }
         }
@@ -139,22 +137,19 @@ public class ModuleSystem : MonoBehaviour
         Module m = allModules[t];
         if (!currentModules.Contains(m))
         {
-            if (m is TypeModule)
+            if (m.Caterorgy != "none")
             {
                 foreach (Module item in currentModules)
                 {
-                    if (item is TypeModule)
-                    {
-                        TypeModule a = m as TypeModule;
-                        TypeModule b = item as TypeModule;
+                    Module a = m;
+                    Module b = item;
 
-                        if (a.Caterorgy == b.Caterorgy)
-                        {
-                            ModuleUIObject ui = ModuleUIMenu.instance.FindUI(item.GetType());
-                            ui.OnRemove();
-                            ui.AllowEdit(ModuleUIMenu.instance.IsOpen);
-                            break;
-                        }
+                    if (a.Caterorgy == b.Caterorgy)
+                    {
+                        ModuleUIObject ui = ModuleUIMenu.instance.FindUI(item.GetType());
+                        ui.OnRemove();
+                        ui.AllowEdit(ModuleUIMenu.instance.IsOpen);
+                        break;
                     }
 
                 }
@@ -189,5 +184,21 @@ public class ModuleSystem : MonoBehaviour
     public bool HasModule(Type t)
     {
         return currentModules.Contains(allModules[t]);
+    }
+    private void Update()
+    {
+        foreach (Module item in currentModules)
+        {
+            if (item.hasUpdate)
+                item.Update();
+        }
+    }
+    private void FixedUpdate()
+    {
+        foreach (Module item in currentModules)
+        {
+            if (item.hasFixedUpdate)
+                item.FixedUpdate();
+        }
     }
 }

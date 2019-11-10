@@ -5,7 +5,7 @@ public class playerAnimationController : MonoBehaviour
 {
     public SpriteRenderer playerNoGun, playerGun,
         hat, rocket, gun, bigGun, sound;
-
+    public Transform shield, deflector;
     public static playerAnimationController instance;
     private void Awake()
     {

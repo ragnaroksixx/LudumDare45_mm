@@ -5,9 +5,8 @@ using UnityEngine;
 public class HornController : MonoBehaviour
 {
     enum Mode {
-        TraverseVertical,
-        TraverseLeft,
-        TraverseRight,
+        Patrol,
+        newGoal,
         Attack,
         Dying
     };
@@ -31,11 +30,14 @@ public class HornController : MonoBehaviour
     public float bulletLife = 1;
     Mode mode;
 
+    public GameObject[] waypoints;
+    private int activeWaypoint = -1;
+
     // Start is called before the first frame update
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
-        this.mode = Mode.TraverseVertical;
+        this.mode = Mode.newGoal ;
         this.executionTime = this.cycleTime;
         this.fireTimer = this.fireDelay;
         this.currentHealth = this.health;
@@ -47,64 +49,25 @@ public class HornController : MonoBehaviour
         if(this.health < 0.0f) this.mode = Mode.Dying;
 
         switch(mode){
-            case Mode.TraverseVertical:
-                if (this.executionTime > 0)
-                {
-                    this.rb.velocity = this.isLocatedBottom ? new Vector2(0.0f, this.speed) : new Vector2(0.0f, -this.speed);
-                    Fire();
-                } 
-                else 
-                {
-                    this.isLocatedBottom = true;
-                    this.executionTime = this.cycleTime;
-                    if (isFacingRight)
-                    {
-                        this.mode = Mode.TraverseRight;
-                    }
-                    else
-                    {
-                        this.mode = Mode.TraverseLeft;
-                    }
-                }
+            case Mode.Patrol:
+                Vector3 goal = this.waypoints[this.activeWaypoint].transform.position;
+                if (V3Equal(this.transform.position, goal))
+                    this.mode = Mode.newGoal;
+                float rot_z = Mathf.Atan2(PlayerMovement.instance.transform.position.y, PlayerMovement.instance.transform.position.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+                Vector3 vector = goal - this.transform.position;
+                vector = vector / Mathf.Sqrt(vector.x*vector.x + vector.y*vector.y);
+                this.rb.velocity = vector * this.speed;
                 break;
-            case Mode.TraverseRight:
-                if (this.executionTime > 0)
-                {
-                    this.rb.velocity = this.isLocatedBottom ? new Vector2(this.speed, this.speed) : new Vector2(this.speed, -this.speed);
-                } 
-                else 
-                {
-                    isFacingRight = !isFacingRight;
-                    FaceDirection(isFacingRight);
-                    this.isLocatedBottom = !this.isLocatedBottom;
-                    this.executionTime = this.cycleTime;
-                    this.fireTimer = this.fireDelay;
-                    this.mode = Mode.TraverseVertical;
-                }
-                break;
-            case Mode.TraverseLeft:
-                if (this.executionTime > 0)
-                {
-                    this.rb.velocity = this.isLocatedBottom ? new Vector2(-this.speed, this.speed) : new Vector2(-this.speed, -this.speed);
-                } 
-                else 
-                {
-                    isFacingRight = !isFacingRight;
-                    FaceDirection(isFacingRight);
-                    this.isLocatedBottom = !this.isLocatedBottom;
-                    this.executionTime = this.cycleTime;
-                    this.fireTimer = this.fireDelay;
-                    this.mode = Mode.TraverseVertical;
-                }
-                break;
-            case Mode.Attack:
+            case Mode.newGoal:
                 this.rb.velocity = new Vector2(0, 0);
-                if(this.executionTime < 0)
+                this.activeWaypoint += 1;
+                if(activeWaypoint >= this.waypoints.Length) 
                 {
-                    SuperShot();  
-                    this.executionTime = this.cycleTime;
-                    
-                } 
+                    this.mode = Mode.Dying;
+                    break;
+                }
+                this.mode = Mode.Patrol;
                 break;
             case Mode.Dying:
                 if (this.executionTime > 0) {
@@ -142,5 +105,9 @@ public class HornController : MonoBehaviour
         Rigidbody2D bullet = GameObject.Instantiate(superShotPrefab, shootPosition.position, shootPosition.rotation).GetComponent<Rigidbody2D>();
         bullet.AddForce((PlayerMovement.instance.transform.position - shootPosition.position) * bulletSpeed);
         Destroy(bullet.gameObject, bulletLife); 
+    }
+
+     public bool V3Equal(Vector3 a, Vector3 b){
+        return Vector3.SqrMagnitude(a - b) < 0.1;
     }
 }
