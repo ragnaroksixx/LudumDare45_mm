@@ -100,14 +100,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canMove)
             {
-                if (Input.GetKey(KeyCode.A))
-                {
-                    input.x -= 1;
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    input.x += 1;
-                }
+                Debug.Log("Horizontal axis: " + Input.GetAxis("Horizontal"));
+                input.x = Input.GetAxis("Horizontal");
+                // input.x = Input.GetAxis("Aim");
             }
             if (input.x > 0 && !isFacingRight)
                 FaceDirection(true);
@@ -138,22 +133,26 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("velocityY", rBody.velocity.y);
         SetDustEmmision();
     }
+
     public void Walk(Vector2 i)
     {
         anim.SetBool("Walk", (i.x != 0));
         i *= speed;
         rBody.velocity = new Vector2(i.x, rBody.velocity.y);
     }
+
     public void Recoil(Vector2 i)
     {
         i *= speed;
         rBody.velocity = new Vector2(i.x, 0);
     }
+
     void FaceDirection(bool right)
     {
         isFacingRight = right;
         transform.localEulerAngles = new Vector3(0, right ? 0 : 180, 0);
     }
+
     void SetDustEmmision()
     {
         EmissionModule em = dust.emission;
